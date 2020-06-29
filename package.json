@@ -1,0 +1,43 @@
+{
+  "name": "@metservice/global-lightning-client",
+  "version": "0.0.1",
+  "description": "A client to access MetraWeather/MetService's global Lightning API",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist/**/!(*.test).*"
+  ],
+  "author": "James Boud <James.Boud@metservice.com>",
+  "license": "MIT",
+  "scripts": {
+    "prepack": "yarn build",
+    "prepublish": "yarn test",
+    "test": "jest",
+    "test:watch": "yarn test --watch",
+    "build": "yarn build:lib && yarn build:src",
+    "build:lib": "autorest --input-file=global-lightning-api.json --output-folder=./lib/ --namespace=foo.bar --verbose --typescript --v3",
+    "build:src": "tsc --ourDir dist",
+    "build:watch": "yarn build:src -w"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,css,md}": "prettier --write"
+  },
+  "devDependencies": {
+    "@metservice/prettier": "1.1.0",
+    "@types/jest": "25.2.3",
+    "@types/node": "14.0.5",
+    "husky": ">=4",
+    "jest": "25.5.4",
+    "lint-staged": ">=10",
+    "prettier": "2.0.4",
+    "source-map-support": "0.5.16",
+    "ts-jest": "25.5.1",
+    "ts-node": "8.1.0",
+    "typescript": "3.9.3"
+  }
+}

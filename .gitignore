@@ -1,0 +1,16 @@
+# Yarn Zero-installs
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+
+# Typescript iterative builds
+build-info
+# Output code
+dist/
+# In case someone compiles in-place rather than to dist
+src/**/*.js
+src/**/*.d.ts
+
+# Old dependencies
+node_modules/
