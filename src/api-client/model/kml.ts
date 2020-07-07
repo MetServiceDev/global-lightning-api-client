@@ -18,14 +18,14 @@ interface StrikePlacemark {
 		}
 	];
 }
-interface KmlDocument {
-	Placemark: StrikePlacemark[];
+interface KMLDocument {
+	Placemark?: StrikePlacemark[];
 }
-export interface kml {
+export interface KML {
 	kml: {
 		$: {
 			xmlns: 'http://www.opengis.net/kml/2.2';
 		};
-		Document: [KmlDocument];
+		Document: [KMLDocument];
 	};
 }

@@ -8,6 +8,7 @@
 build-info
 # Output code
 dist/
+lib/
 # In case someone compiles in-place rather than to dist
 src/**/*.js
 src/**/*.d.ts

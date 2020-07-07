@@ -1,0 +1,1867 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When parsing strikes when parsing KML should be able to merge multiple collections 1`] = `
+Object {
+  "kml": Object {
+    "$": Object {
+      "xmlns": "http://www.opengis.net/kml/2.2",
+    },
+    "Document": Array [
+      Object {
+        "Placemark": Array [
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-01T03:06:46.589Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "-15.2",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "68",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "0.5",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-01T03:06:46.589Z, Current:-15.2kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-98.274532,40.896946",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-01T03:06:46.589Z, Current:-15.2kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-01T03:06:46.703Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "-21.2",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "-4",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-01T03:06:46.703Z, Current:-21.2kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-76.992327,32.189369",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-01T03:06:46.703Z, Current:-21.2kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-01T03:06:46.921Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "-28",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "-76",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "3",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-01T03:06:46.921Z, Current:-28kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-76.895099,32.195193",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-01T03:06:46.921Z, Current:-28kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-07T04:10:15.233Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "0",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "-30",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "3",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "CLOUD",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-07T04:10:15.233Z, Current:0kA, Type:CLOUD",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "112.85769,4.312199",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-07T04:10:15.233Z, Current:0kA, Type:CLOUD",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-07T04:10:15.598Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "-39.4",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "10",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-07T04:10:15.598Z, Current:-39.4kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-81.57588,50.631875",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-07T04:10:15.598Z, Current:-39.4kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-07T04:10:15.787Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "-22.8",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "-11",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-07T04:10:15.787Z, Current:-22.8kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-100.417388,44.7781",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-07T04:10:15.787Z, Current:-22.8kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-07T04:21:44.173Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "76",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "8",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "28",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "7.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.75",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-07T04:21:44.173Z, Current:76kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-99.143487,15.664305",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-07T04:21:44.173Z, Current:76kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-07T04:21:44.445Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "47.9",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "10",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "23",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "6",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.5",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-07T04:21:44.445Z, Current:47.9kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-99.17313,15.533024",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-07T04:21:44.445Z, Current:47.9kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-07T04:21:45.099Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "15",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "67",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-07T04:21:45.099Z, Current:15kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-83.573248,37.765501",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-07T04:21:45.099Z, Current:15kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`When parsing strikes when parsing KML should be able to merge two collections 1`] = `
+Object {
+  "kml": Object {
+    "$": Object {
+      "xmlns": "http://www.opengis.net/kml/2.2",
+    },
+    "Document": Array [
+      Object {
+        "Placemark": Array [
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-01T03:06:46.589Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "-15.2",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "68",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "0.5",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-01T03:06:46.589Z, Current:-15.2kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-98.274532,40.896946",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-01T03:06:46.589Z, Current:-15.2kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-01T03:06:46.703Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "-21.2",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "-4",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-01T03:06:46.703Z, Current:-21.2kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-76.992327,32.189369",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-01T03:06:46.703Z, Current:-21.2kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-01T03:06:46.921Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "-28",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "-76",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "3",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-01T03:06:46.921Z, Current:-28kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-76.895099,32.195193",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-01T03:06:46.921Z, Current:-28kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-07T04:10:15.233Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "0",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "-30",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "3",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "CLOUD",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-07T04:10:15.233Z, Current:0kA, Type:CLOUD",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "112.85769,4.312199",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-07T04:10:15.233Z, Current:0kA, Type:CLOUD",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-07T04:10:15.598Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "-39.4",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "10",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-07T04:10:15.598Z, Current:-39.4kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-81.57588,50.631875",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-07T04:10:15.598Z, Current:-39.4kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-07T04:10:15.787Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "-22.8",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "-11",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-07T04:10:15.787Z, Current:-22.8kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-100.417388,44.7781",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-07T04:10:15.787Z, Current:-22.8kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`When parsing strikes when parsing KML should return valid KML 1`] = `
+Object {
+  "kml": Object {
+    "$": Object {
+      "xmlns": "http://www.opengis.net/kml/2.2",
+    },
+    "Document": Array [
+      Object {
+        "Placemark": Array [
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-01T03:06:46.589Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "-15.2",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "68",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "0.5",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-01T03:06:46.589Z, Current:-15.2kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-98.274532,40.896946",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-01T03:06:46.589Z, Current:-15.2kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-01T03:06:46.703Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "-21.2",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "-4",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-01T03:06:46.703Z, Current:-21.2kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-76.992327,32.189369",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-01T03:06:46.703Z, Current:-21.2kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+          Object {
+            "ExtendedData": Array [
+              Object {
+                "Data": Array [
+                  Object {
+                    "$": Object {
+                      "name": "date_time",
+                    },
+                    "value": Array [
+                      "2020-07-01T03:06:46.921Z",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "kA",
+                    },
+                    "value": Array [
+                      "-28",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_bearing",
+                    },
+                    "value": Array [
+                      "-76",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "GDOP",
+                    },
+                    "value": Array [
+                      "3",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_major_axis",
+                    },
+                    "value": Array [
+                      "1",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "ellipse_minor_axis",
+                    },
+                    "value": Array [
+                      "0.25",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "strike_type",
+                    },
+                    "value": Array [
+                      "GROUND",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "source",
+                    },
+                    "value": Array [
+                      "toa",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "name",
+                    },
+                    "value": Array [
+                      "Lightning Strike",
+                    ],
+                  },
+                  Object {
+                    "$": Object {
+                      "name": "description",
+                    },
+                    "value": Array [
+                      "Time:2020-07-01T03:06:46.921Z, Current:-28kA, Type:GROUND",
+                    ],
+                  },
+                ],
+              },
+            ],
+            "Point": Array [
+              Object {
+                "coordinates": Array [
+                  "-76.895099,32.195193",
+                ],
+              },
+            ],
+            "description": Array [
+              "Time:2020-07-01T03:06:46.921Z, Current:-28kA, Type:GROUND",
+            ],
+            "name": Array [
+              "Lightning Strike",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;

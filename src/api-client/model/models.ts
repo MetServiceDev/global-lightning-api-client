@@ -12,7 +12,5 @@ export * from './lightningFeatureV3Properties';
 export * from './point';
 export * from './point2D';
 export * from './pointGeometry';
-export * from './polygon';
-export * from './polygonGeometry';
-export * from './providers';
 export * from './tileJSON';
+export * from './kml';

@@ -46,8 +46,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:25.2.3"
       ],
       [
+        "@types/luxon",
+        "npm:1.24.1"
+      ],
+      [
         "@types/node",
         "npm:14.0.5"
+      ],
+      [
+        "@types/parse-link-header",
+        "npm:1.0.0"
       ],
       [
         "@types/xml2js",
@@ -72,6 +80,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "luxon",
         "npm:1.24.1"
+      ],
+      [
+        "parse-link-header",
+        "npm:1.0.1"
       ],
       [
         "prettier",
@@ -109,13 +121,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@turf/helpers", "npm:6.1.4"],
             ["@types/isomorphic-fetch", "npm:0.0.35"],
             ["@types/jest", "npm:25.2.3"],
+            ["@types/luxon", "npm:1.24.1"],
             ["@types/node", "npm:14.0.5"],
+            ["@types/parse-link-header", "npm:1.0.0"],
             ["@types/xml2js", "npm:0.4.5"],
             ["husky", "npm:4.2.5"],
             ["isomorphic-fetch", "npm:2.2.1"],
             ["jest", "npm:25.5.4"],
             ["lint-staged", "npm:10.2.11"],
             ["luxon", "npm:1.24.1"],
+            ["parse-link-header", "npm:1.0.1"],
             ["prettier", "npm:2.0.4"],
             ["source-map-support", "npm:0.5.16"],
             ["ts-jest", "virtual:d6efe2c559f4f4ea746b2cb2c79befff80c59d2ab7104dc756ee4aab7df868805425fd7da5e4372c8ca939966949fee0b92475633e56823cad2f3be82536e5f7#npm:25.5.1"],
@@ -775,13 +790,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@turf/helpers", "npm:6.1.4"],
             ["@types/isomorphic-fetch", "npm:0.0.35"],
             ["@types/jest", "npm:25.2.3"],
+            ["@types/luxon", "npm:1.24.1"],
             ["@types/node", "npm:14.0.5"],
+            ["@types/parse-link-header", "npm:1.0.0"],
             ["@types/xml2js", "npm:0.4.5"],
             ["husky", "npm:4.2.5"],
             ["isomorphic-fetch", "npm:2.2.1"],
             ["jest", "npm:25.5.4"],
             ["lint-staged", "npm:10.2.11"],
             ["luxon", "npm:1.24.1"],
+            ["parse-link-header", "npm:1.0.1"],
             ["prettier", "npm:2.0.4"],
             ["source-map-support", "npm:0.5.16"],
             ["ts-jest", "virtual:d6efe2c559f4f4ea746b2cb2c79befff80c59d2ab7104dc756ee4aab7df868805425fd7da5e4372c8ca939966949fee0b92475633e56823cad2f3be82536e5f7#npm:25.5.1"],
@@ -934,6 +952,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/luxon", [
+        ["npm:1.24.1", {
+          "packageLocation": "./.yarn/cache/@types-luxon-npm-1.24.1-3b6d7c9b67-e83d7eba21.zip/node_modules/@types/luxon/",
+          "packageDependencies": [
+            ["@types/luxon", "npm:1.24.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/node", [
         ["npm:14.0.5", {
           "packageLocation": "./.yarn/cache/@types-node-npm-14.0.5-e76752face-38a9f9b66c.zip/node_modules/@types/node/",
@@ -957,6 +984,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-parse-json-npm-4.0.0-298522afa6-4a8f720afa.zip/node_modules/@types/parse-json/",
           "packageDependencies": [
             ["@types/parse-json", "npm:4.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/parse-link-header", [
+        ["npm:1.0.0", {
+          "packageLocation": "./.yarn/cache/@types-parse-link-header-npm-1.0.0-a873079ec6-54cbf7806f.zip/node_modules/@types/parse-link-header/",
+          "packageDependencies": [
+            ["@types/parse-link-header", "npm:1.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -4606,6 +4642,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["parse-link-header", [
+        ["npm:1.0.1", {
+          "packageLocation": "./.yarn/cache/parse-link-header-npm-1.0.1-d97d946e1f-c69a17e05e.zip/node_modules/parse-link-header/",
+          "packageDependencies": [
+            ["parse-link-header", "npm:1.0.1"],
+            ["xtend", "npm:4.0.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["parse5", [
         ["npm:5.1.0", {
           "packageLocation": "./.yarn/cache/parse5-npm-5.1.0-b9c35ee7fa-f82ab25810.zip/node_modules/parse5/",
@@ -6294,6 +6340,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/xmlchars-npm-2.2.0-8b78f0f5e4-69bbb61e8d.zip/node_modules/xmlchars/",
           "packageDependencies": [
             ["xmlchars", "npm:2.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["xtend", [
+        ["npm:4.0.2", {
+          "packageLocation": "./.yarn/cache/xtend-npm-4.0.2-7f2375736e-37ee522a3e.zip/node_modules/xtend/",
+          "packageDependencies": [
+            ["xtend", "npm:4.0.2"]
           ],
           "linkType": "HARD",
         }]
