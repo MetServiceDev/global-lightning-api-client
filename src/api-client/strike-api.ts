@@ -199,7 +199,7 @@ async function getFormattedStrikes<T extends StrikeCollectionType>(format: Suppo
 async function getFormattedStrikes(format: SupportedMimeType, response: Response): Promise<StrikeCollections> {
 	switch (format) {
 		case SupportedMimeType.GeoJson: {
-			// Fallthrough
+			return new GeoJsonStrikeCollection<LightningFeatureCollectionV3>(response);
 		}
 		case SupportedMimeType.GeoJsonV3: {
 			return new GeoJsonStrikeCollection<LightningFeatureCollectionV3>(response);
@@ -208,7 +208,7 @@ async function getFormattedStrikes(format: SupportedMimeType, response: Response
 			return new GeoJsonStrikeCollection<LightningFeatureCollectionV2>(response);
 		}
 		case SupportedMimeType.Blitzen: {
-			// Fallthrough
+			return new BlitzenStrikeCollection<BlitzenCollectionV3>(response);
 		}
 		case SupportedMimeType.BlitzenV3: {
 			return new BlitzenStrikeCollection<BlitzenCollectionV3>(response);

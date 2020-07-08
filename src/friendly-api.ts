@@ -1,4 +1,4 @@
-import { StrikeCollection, StrikeCollectionType, KML, LightningFeatureCollectionV3 } from 'api-client/strike-collections';
+import { StrikeCollection, StrikeCollectionType, KML, LightningFeatureCollectionV3 } from './api-client/strike-collections';
 import {
 	SupportedMimeType,
 	CredentialType,
