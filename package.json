@@ -14,9 +14,8 @@
     "prepublish": "yarn test",
     "test": "jest",
     "test:watch": "yarn test --watch",
-    "build": "tsc --outDir dist",
-    "build:watch": "yarn build -w",
-    "example": "yarn node dist/bin/examples.js"
+    "build": "tsc",
+    "build:watch": "yarn build -w"
   },
   "husky": {
     "hooks": {
@@ -44,7 +43,6 @@
     "typescript": "3.9.3"
   },
   "dependencies": {
-    "@turf/helpers": "6.1.4",
     "isomorphic-fetch": "2.2.1",
     "luxon": "1.24.1",
     "parse-link-header": "1.0.1",

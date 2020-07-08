@@ -2,30 +2,30 @@ import {
 	persistStrikesToFile,
 	fetchAllStrikesOverAreaAndTime,
 	fetchAllHistoricStrikesOverAreaAndTimeInChunks,
+	fetchAllFinalisedStrikesInChunks,
+	fetchStrikesWhenFinalised,
 	SupportedMimeType,
 	SupportedVersion,
 	CredentialType,
-	getADurationOfStrikesOnceFinalised,
 } from '../src';
-import { tmpdir } from 'os';
 import { DateTime } from 'luxon';
 import { promisify } from 'util';
 import { readdir } from 'fs';
-import { fetchAllFinalisedStrikesInChunks } from 'friendly-api';
 
 const readdirPromise = promisify(readdir);
 
 const turnIsoDateIntoUrlPath = (isoDate: string) => isoDate.replace(/:\./g, '_');
-const FOLDER_TO_DOWNLOAD_STRIKES_TO = tmpdir();
-// Fill me in with your credentials.
-const credentials = {
-	type: CredentialType.jwt,
-	token: '',
-};
+export interface ExampleArguments {
+	folderToDownloadStrikesTo: string;
+	credentials: {
+		type: CredentialType;
+		token: string;
+	};
+}
 /**
  * Fetch twenty minutes of data from an hour ago
  */
-const historicFetchUsage = async () => {
+const fetchHistoricData = async ({ folderToDownloadStrikesTo, credentials }: ExampleArguments) => {
 	const anHourAgo = new Date(Date.now() - 60 * 60 * 1000);
 	const fortyMinutesAgo = new Date(anHourAgo.valueOf() + 20 * 60 * 1000);
 	const strikeCollection = await fetchAllStrikesOverAreaAndTime(SupportedMimeType.KML, {
@@ -40,7 +40,7 @@ const historicFetchUsage = async () => {
 	});
 	await persistStrikesToFile(
 		strikeCollection,
-		FOLDER_TO_DOWNLOAD_STRIKES_TO,
+		folderToDownloadStrikesTo,
 		`${turnIsoDateIntoUrlPath(anHourAgo.toISOString())}--${turnIsoDateIntoUrlPath(fortyMinutesAgo.toISOString())}.kml`
 	);
 };
@@ -48,7 +48,7 @@ const historicFetchUsage = async () => {
  * Fetch ten days of data in 15 minute chunks.
  * This will make 960 parallel requests and ensure each chunk has its own data.
  */
-const historicChunkedUsage = async () => {
+const fetchLargePeriodOfData = async ({ folderToDownloadStrikesTo, credentials }: ExampleArguments) => {
 	const strikeCollections = await fetchAllHistoricStrikesOverAreaAndTimeInChunks(SupportedMimeType.KML, 'PT15M', {
 		apiVersion: SupportedVersion.Four,
 		bbox: [-180, -90, 180, 90],
@@ -59,11 +59,12 @@ const historicChunkedUsage = async () => {
 			end: '2020-06-30T00:00:00.000Z',
 		},
 	});
-	await Promise.all(
+	const fileNames = await Promise.all(
 		strikeCollections.map(async ({ strikeCollection, start, end }) => {
 			const fileName = `${turnIsoDateIntoUrlPath(start.toISOString())}--${turnIsoDateIntoUrlPath(end.toISOString())}.kml`;
-			await persistStrikesToFile(strikeCollection, FOLDER_TO_DOWNLOAD_STRIKES_TO, fileName);
+			await persistStrikesToFile(strikeCollection, folderToDownloadStrikesTo, fileName);
 			// Do something with the individual file
+			return fileName;
 		})
 	);
 	// Do something with all of the files
@@ -77,8 +78,8 @@ const historicChunkedUsage = async () => {
  *
  * persistStrikesToFile will overwrite any existing files.
  */
-const getAllFinalisedStrikes = async () => {
-	const files = await readdirPromise(FOLDER_TO_DOWNLOAD_STRIKES_TO);
+const fetchAllFinishedData = async ({ folderToDownloadStrikesTo, credentials }: ExampleArguments) => {
+	const files = await readdirPromise(folderToDownloadStrikesTo);
 	const FILE_ISO_STRING_FORMAT = 'yyyy-MM-ddTHH_mm_ss_SSSZ';
 	/**
 	 *	For all the previously fetched files:
@@ -107,7 +108,7 @@ const getAllFinalisedStrikes = async () => {
 	const newFiles = await Promise.all(
 		strikeCollections.map(async ({ strikeCollection, start, end }) => {
 			const fileName = `${turnIsoDateIntoUrlPath(start.toISOString())}--${turnIsoDateIntoUrlPath(end.toISOString())}.kml`;
-			await persistStrikesToFile(strikeCollection, FOLDER_TO_DOWNLOAD_STRIKES_TO, fileName);
+			await persistStrikesToFile(strikeCollection, folderToDownloadStrikesTo, fileName);
 			// Do something with the individual file
 			return fileName;
 		})
@@ -118,8 +119,8 @@ const getAllFinalisedStrikes = async () => {
 /**
  * Every time a 15 minute chunk is finalised, it is published here
  */
-const getStrikesAsTheyAreFinalised = async () => {
-	await getADurationOfStrikesOnceFinalised(
+const fetchPeriodOfStrikesAsTheyAreFinalised = ({ folderToDownloadStrikesTo, credentials }: ExampleArguments) => {
+	fetchStrikesWhenFinalised(
 		SupportedMimeType.GeoJsonV3,
 		'PT15M',
 		{
@@ -134,7 +135,7 @@ const getStrikesAsTheyAreFinalised = async () => {
 		async ({ strikeCollection, start, end }) => {
 			await persistStrikesToFile(
 				strikeCollection,
-				FOLDER_TO_DOWNLOAD_STRIKES_TO,
+				folderToDownloadStrikesTo,
 				`${turnIsoDateIntoUrlPath(start.toISOString())}--${turnIsoDateIntoUrlPath(end.toISOString())}.json`
 			);
 		}
@@ -142,4 +143,4 @@ const getStrikesAsTheyAreFinalised = async () => {
 };
 
 // Add a nice wrapper around this to call it from the CLI and have it switch examples and take args? As it stands, you just replace historicFetchUsage with the example you care about
-historicFetchUsage();
+export { fetchHistoricData, fetchLargePeriodOfData, fetchAllFinishedData, fetchPeriodOfStrikesAsTheyAreFinalised };

@@ -2,7 +2,8 @@ export {
 	fetchAllStrikesOverAreaAndTime,
 	fetchAllHistoricStrikesOverAreaAndTimeInChunks,
 	persistStrikesToFile,
-	getADurationOfStrikesOnceFinalised,
+	fetchAllFinalisedStrikesInChunks,
+	fetchStrikesWhenFinalised,
 } from './friendly-api';
 export {
 	fetchAndFormatStrikesAndFormatRetryingOnFail,

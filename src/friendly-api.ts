@@ -29,7 +29,7 @@ interface TimeInterval {
 }
 type TimeDuration = Duration | string | number;
 
-interface TimeIndependentStrikeQueryParameters {
+export interface OpenEndedStrikeQueryParameters {
 	credentials: {
 		type: CredentialType;
 		token: string;
@@ -43,7 +43,7 @@ interface TimeIndependentStrikeQueryParameters {
 	directions?: LightningStrikeDirection[];
 	limit: number;
 }
-interface StrikeQueryParameters extends TimeIndependentStrikeQueryParameters {
+export interface ClosedIntervalStrikeQueryParameters extends OpenEndedStrikeQueryParameters {
 	time: TimeInterval;
 }
 interface StrikeCollectionAndTime<T extends StrikeCollectionType> {
@@ -105,7 +105,10 @@ const transformDurationTimeIntoDuration = (duration: TimeDuration): Duration => 
  * - return
  * NOTE: If the provider is not global, there may not be data in the given area
  */
-async function fetchAllStrikesOverAreaAndTime(format: SupportedMimeType, query: StrikeQueryParameters): Promise<StrikeCollection<StrikeCollectionType>> {
+async function fetchAllStrikesOverAreaAndTime(
+	format: SupportedMimeType,
+	query: ClosedIntervalStrikeQueryParameters
+): Promise<StrikeCollection<StrikeCollectionType>> {
 	const time = transformQueryTimeIntoInterval(query.time);
 	let offset = 0;
 	let { strikeCollection, strikesRemaining } = await fetchAndFormatStrikesAndFormatRetryingOnFail(format, {
@@ -139,17 +142,17 @@ async function fetchAllStrikesOverAreaAndTime(format: SupportedMimeType, query: 
 async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
 	format: SupportedMimeType.KML,
 	chunkDuration: TimeDuration,
-	query: StrikeQueryParameters
+	query: ClosedIntervalStrikeQueryParameters
 ): Promise<StrikeCollectionAndTime<KML>[]>;
 async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
 	format: SupportedMimeType,
 	chunkDuration: TimeDuration,
-	query: StrikeQueryParameters
+	query: ClosedIntervalStrikeQueryParameters
 ): Promise<StrikeCollectionAndTime<StrikeCollectionType>[]>;
 async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
 	format: SupportedMimeType,
 	chunkDuration: TimeDuration,
-	query: StrikeQueryParameters
+	query: ClosedIntervalStrikeQueryParameters
 ): Promise<StrikeCollectionAndTime<StrikeCollectionType>[]> {
 	const queryTime = transformQueryTimeIntoInterval(query.time);
 	if (queryTime.end >= DateTime.utc().minus(Duration.fromISO(FINALISED_HISTORY_TIME))) {
@@ -176,7 +179,7 @@ async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
 async function fetchAllFinalisedStrikesInChunks(
 	format: SupportedMimeType,
 	chunkDuration: TimeDuration,
-	query: TimeIndependentStrikeQueryParameters
+	query: OpenEndedStrikeQueryParameters
 ): Promise<StrikeCollectionAndTime<StrikeCollectionType>[]> {
 	const now = DateTime.utc();
 	const chunk = transformDurationTimeIntoDuration(chunkDuration);
@@ -196,7 +199,7 @@ async function fetchAllFinalisedStrikesInChunks(
 /**
  * Saves the strikes to a file, creating any required directories to persist the file.
  *
- * WARNING: This is naive and does not buffer the collection.
+ * WARNING: This will overwrite any existing files, and this is naive and does not buffer/stream the collection.
  */
 const persistStrikesToFile = async (collectionToPersist: StrikeCollection<StrikeCollectionType>, directoryToSaveIn: string, fileName: string) => {
 	try {
@@ -214,7 +217,10 @@ const persistStrikesToFile = async (collectionToPersist: StrikeCollection<Strike
  * Replaces polling. Good idea? Look at how hard this is first.
  * Creates a WebSocket to listen to all new strikes
  */
-function listenForNewStrikesInArea<T extends StrikeCollectionType>(format: SupportedMimeType, query: StrikeQueryParameters): Promise<StrikeCollection<T>> {
+function listenForNewStrikesInArea<T extends StrikeCollectionType>(
+	format: SupportedMimeType,
+	query: ClosedIntervalStrikeQueryParameters
+): Promise<StrikeCollection<T>> {
 	throw new Error('Not yet implemented');
 }
 /**
@@ -224,35 +230,72 @@ function listenForNewStrikesInArea<T extends StrikeCollectionType>(format: Suppo
  * 		- Request strikes for ten minutes
  * 		- Returns all new strikes
  */
-function pollForNewStrikesInArea<T extends StrikeCollectionType>(format: SupportedMimeType, query: StrikeQueryParameters): Promise<StrikeCollection<T>> {
-	throw new Error('Not yet implemented');
-}
-
-function getChunkOfStrikesWhenFinalised(
-	format: SupportedMimeType.KML,
-	chunkDuration: TimeDuration,
-	query: TimeIndependentStrikeQueryParameters,
-	callback: (strikeCollection: StrikeCollectionAndTime<KML>) => void
-): Promise<StrikeCollection<KML>>;
-function getChunkOfStrikesWhenFinalised(
-	format: SupportedMimeType.GeoJsonV3,
-	chunkDuration: TimeDuration,
-	query: TimeIndependentStrikeQueryParameters,
-	callback: (strikeCollection: StrikeCollectionAndTime<LightningFeatureCollectionV3>) => void
-): Promise<StrikeCollection<LightningFeatureCollectionV3>>;
-function getChunkOfStrikesWhenFinalised(
+function pollForNewStrikesInArea<T extends StrikeCollectionType>(
 	format: SupportedMimeType,
-	chunkDuration: TimeDuration,
-	query: TimeIndependentStrikeQueryParameters,
-	callback: (strikeCollection: StrikeCollectionAndTime<StrikeCollectionType>) => void
-): Promise<StrikeCollection<StrikeCollectionType>>;
-function getChunkOfStrikesWhenFinalised<T extends StrikeCollectionType>(
-	format: SupportedMimeType,
-	chunkDuration: TimeDuration,
-	query: TimeIndependentStrikeQueryParameters,
-	callback: (strikeCollection: StrikeCollectionAndTime<T>) => void
+	query: ClosedIntervalStrikeQueryParameters
 ): Promise<StrikeCollection<T>> {
 	throw new Error('Not yet implemented');
+}
+/**
+ * When the specified periodOfStrikes is finalised, fetches the data and returns it.
+ *
+ */
+// function fetchStrikesWhenFinalised(
+// 	format: SupportedMimeType.KML,
+// 	periodOfStrikes: TimeDuration,
+// 	query: OpenEndedStrikeQueryParameters,
+// 	callback: (strikeCollection: StrikeCollectionAndTime<KML>) => void
+// ): void;
+// function fetchStrikesWhenFinalised(
+// 	format: SupportedMimeType.GeoJsonV3,
+// 	chunkDuration: TimeDuration,
+// 	query: OpenEndedStrikeQueryParameters,
+// 	callback: (strikeCollection: StrikeCollectionAndTime<LightningFeatureCollectionV3>) => void
+// ): void;
+// function fetchStrikesWhenFinalised(
+// 	format: SupportedMimeType,
+// 	chunkDuration: TimeDuration,
+// 	query: OpenEndedStrikeQueryParameters,
+// 	callback: (strikeCollection: StrikeCollectionAndTime<StrikeCollectionType>) => void
+// ): void;
+function fetchStrikesWhenFinalised<T extends StrikeCollectionType>(
+	format: SupportedMimeType,
+	periodOfStrikes: TimeDuration,
+	query: OpenEndedStrikeQueryParameters,
+	callback: (strikeCollection: StrikeCollectionAndTime<StrikeCollectionType>) => void
+): void {
+	const finalisedHistoryTimeDuration = Duration.fromISO(FINALISED_HISTORY_TIME);
+	const now = DateTime.utc();
+	const chunkDuration = transformDurationTimeIntoDuration(periodOfStrikes);
+	const latestTimeAChunkCanBeFinalised = now.minus(finalisedHistoryTimeDuration);
+	let nextChunkEndTime = transformDateTimeValueIntoDateTime(query.time.start);
+	while (nextChunkEndTime < latestTimeAChunkCanBeFinalised) {
+		nextChunkEndTime = nextChunkEndTime.plus(chunkDuration);
+	}
+	const timeToDoNextFetch = nextChunkEndTime.plus(finalisedHistoryTimeDuration);
+	const timeUntilNextFetch = timeToDoNextFetch.diff(now);
+
+	let start = nextChunkEndTime.minus(chunkDuration);
+	let end = nextChunkEndTime;
+	const timeAfterAChunkFetchUntilNextChunkValid = chunkDuration.plus(finalisedHistoryTimeDuration);
+	const fetchStrikesForChunk = async (start: DateTime, end: DateTime) => {
+		const strikeCollection = await fetchAllStrikesOverAreaAndTime(format, {
+			...query,
+			time: {
+				start,
+				end,
+			},
+		});
+		const nextStart = end;
+		const nextEnd = end.plus(chunkDuration);
+		setTimeout(async () => await fetchStrikesForChunk(nextStart, nextEnd), timeAfterAChunkFetchUntilNextChunkValid.as('milliseconds'));
+		callback({
+			strikeCollection,
+			start: start.toJSDate(),
+			end: end.toJSDate(),
+		});
+	};
+	setTimeout(async () => await fetchStrikesForChunk(start, end), timeUntilNextFetch.as('milliseconds'));
 }
 
 /**
@@ -263,14 +306,14 @@ function getChunkOfStrikesWhenFinalised<T extends StrikeCollectionType>(
  */
 function getHistoricStrikesAndPollForNewOnes<T extends StrikeCollectionType>(
 	format: SupportedMimeType,
-	query: StrikeQueryParameters
+	query: ClosedIntervalStrikeQueryParameters
 ): Promise<StrikeCollection<T>> {
 	throw new Error('Not yet implemented');
 }
 
 function getHistoricStrikesAndListenForNewOnes<T extends StrikeCollectionType>(
 	format: SupportedMimeType,
-	query: StrikeQueryParameters
+	query: ClosedIntervalStrikeQueryParameters
 ): Promise<StrikeCollection<T>> {
 	throw new Error('Not yet implemented');
 }
@@ -283,7 +326,7 @@ function getHistoricStrikesAndListenForNewOnes<T extends StrikeCollectionType>(
 async function getStrikesAndReturnBatches(
 	format: SupportedMimeType,
 	chunkDuration: TimeDuration,
-	query: TimeIndependentStrikeQueryParameters,
+	query: OpenEndedStrikeQueryParameters,
 	callback: (strikeCollection: StrikeCollectionAndTime<StrikeCollectionType>) => void
 ): Promise<StrikeCollectionAndTime<StrikeCollectionType>[]> {
 	const now = DateTime.utc();
@@ -314,6 +357,6 @@ export {
 	fetchAllStrikesOverAreaAndTime,
 	fetchAllHistoricStrikesOverAreaAndTimeInChunks,
 	fetchAllFinalisedStrikesInChunks,
+	fetchStrikesWhenFinalised,
 	persistStrikesToFile,
-	getChunkOfStrikesWhenFinalised as getADurationOfStrikesOnceFinalised,
 };

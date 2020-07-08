@@ -34,10 +34,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:1.1.0"
       ],
       [
-        "@turf/helpers",
-        "npm:6.1.4"
-      ],
-      [
         "@types/isomorphic-fetch",
         "npm:0.0.35"
       ],
@@ -118,7 +114,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["@metservice/prettier", "npm:1.1.0"],
-            ["@turf/helpers", "npm:6.1.4"],
             ["@types/isomorphic-fetch", "npm:0.0.35"],
             ["@types/jest", "npm:25.2.3"],
             ["@types/luxon", "npm:1.24.1"],
@@ -787,7 +782,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@metservice/global-lightning-client", "workspace:."],
             ["@metservice/prettier", "npm:1.1.0"],
-            ["@turf/helpers", "npm:6.1.4"],
             ["@types/isomorphic-fetch", "npm:0.0.35"],
             ["@types/jest", "npm:25.2.3"],
             ["@types/luxon", "npm:1.24.1"],
@@ -825,15 +819,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@sinonjs/commons", "npm:1.8.0"],
             ["type-detect", "npm:4.0.8"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@turf/helpers", [
-        ["npm:6.1.4", {
-          "packageLocation": "./.yarn/cache/@turf-helpers-npm-6.1.4-b38b44c234-c592c5f4ba.zip/node_modules/@turf/helpers/",
-          "packageDependencies": [
-            ["@turf/helpers", "npm:6.1.4"]
           ],
           "linkType": "HARD",
         }]

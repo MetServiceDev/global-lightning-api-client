@@ -584,7 +584,6 @@ __metadata:
   resolution: "@metservice/global-lightning-client@workspace:."
   dependencies:
     "@metservice/prettier": 1.1.0
-    "@turf/helpers": 6.1.4
     "@types/isomorphic-fetch": 0.0.35
     "@types/jest": 25.2.3
     "@types/luxon": 1.24.1
@@ -619,13 +618,6 @@ __metadata:
   dependencies:
     type-detect: 4.0.8
   checksum: 57e07458d899a3f09bd46e79445b4210837c37cbd9c9e5be9dd7746be0a02a0f9897f8dcde5e89836b1af7e2fc6cb6765626a37066747e8acc863c1b8b6fdccb
-  languageName: node
-  linkType: hard
-
-"@turf/helpers@npm:6.1.4":
-  version: 6.1.4
-  resolution: "@turf/helpers@npm:6.1.4"
-  checksum: c592c5f4baef33070da27648a5e7ebe587fb14c01e9afca34fb403d8e60602e739ee75414dd2f761df59a964ece3c867cf1e0361863c1eda95383f2739946f2e
   languageName: node
   linkType: hard
 

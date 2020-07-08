@@ -1,4 +1,4 @@
-import { Interval, DateTime, Duration } from 'luxon';
+import { Interval } from 'luxon';
 import 'isomorphic-fetch';
 import {
 	StrikeCollection,
@@ -9,6 +9,7 @@ import {
 	StrikeCollections,
 	GeoJsonStrikeCollection,
 	BlitzenStrikeCollection,
+	CSV,
 } from './strike-collections';
 import parseLinkHeader from 'parse-link-header';
 import { LightningFeatureCollectionV3, LightningFeatureCollectionV2, BlitzenCollectionV3, BlitzenCollectionV2, BlitzenCollectionV1 } from './model/models';
@@ -88,15 +89,15 @@ export interface ApiResponse<SC extends StrikeCollectionType> {
 	strikesRemaining: boolean;
 }
 
-// async function fetchAndFormatStrikes(format: SupportedMimeType.GeoJson, params: StrikeQueryParameters): Promise<LightningFeatureCollectionV3>;
-// async function fetchAndFormatStrikes(format: SupportedMimeType.GeoJsonV3, params: StrikeQueryParameters): Promise<LightningFeatureCollectionV3>;
-// async function fetchAndFormatStrikes(format: SupportedMimeType.GeoJsonV2, params: StrikeQueryParameters): Promise<LightningFeatureCollectionV2>;
-// async function fetchAndFormatStrikes(format: SupportedMimeType.Blitzen, params: StrikeQueryParameters): Promise<BlitzenVersion3>;
-// async function fetchAndFormatStrikes(format: SupportedMimeType.BlitzenV3, params: StrikeQueryParameters): Promise<BlitzenVersion3>;
-// async function fetchAndFormatStrikes(format: SupportedMimeType.BlitzenV2, params: StrikeQueryParameters): Promise<BlitzenVersion2>;
-// async function fetchAndFormatStrikes(format: SupportedMimeType.BlitzenV1, params: StrikeQueryParameters): Promise<BlitzenVersion1>;
+async function fetchAndFormatStrikes(format: SupportedMimeType.GeoJson, params: StrikeQueryParameters): Promise<ApiResponse<LightningFeatureCollectionV3>>;
+async function fetchAndFormatStrikes(format: SupportedMimeType.GeoJsonV3, params: StrikeQueryParameters): Promise<ApiResponse<LightningFeatureCollectionV3>>;
+async function fetchAndFormatStrikes(format: SupportedMimeType.GeoJsonV2, params: StrikeQueryParameters): Promise<ApiResponse<LightningFeatureCollectionV2>>;
+async function fetchAndFormatStrikes(format: SupportedMimeType.Blitzen, params: StrikeQueryParameters): Promise<ApiResponse<BlitzenCollectionV3>>;
+async function fetchAndFormatStrikes(format: SupportedMimeType.BlitzenV3, params: StrikeQueryParameters): Promise<ApiResponse<BlitzenCollectionV3>>;
+async function fetchAndFormatStrikes(format: SupportedMimeType.BlitzenV2, params: StrikeQueryParameters): Promise<ApiResponse<BlitzenCollectionV2>>;
+async function fetchAndFormatStrikes(format: SupportedMimeType.BlitzenV1, params: StrikeQueryParameters): Promise<ApiResponse<BlitzenCollectionV1>>;
+async function fetchAndFormatStrikes(format: SupportedMimeType.CSV, params: StrikeQueryParameters): Promise<ApiResponse<CSV>>;
 async function fetchAndFormatStrikes(format: SupportedMimeType.KML, params: StrikeQueryParameters): Promise<ApiResponse<KML>>;
-// async function fetchAndFormatStrikes(format: SupportedMimeType.CSV, params: StrikeQueryParameters): Promise<Csv>;
 async function fetchAndFormatStrikes(format: SupportedMimeType, params: StrikeQueryParameters): Promise<ApiResponse<StrikeCollectionType>>;
 async function fetchAndFormatStrikes(
 	format: SupportedMimeType,
@@ -106,7 +107,7 @@ async function fetchAndFormatStrikes(
 	const directionsString = directions ? `&direction=${directions.join(',')}` : '';
 	const timeString = `${time.start.setZone('utc').toISO()}--${time.end.setZone('utc').toISO()}`;
 	const url = `https://lightning.api.metraweather.com/${apiVersion}/strikes?time=${timeString}&bbox=${bbox}&limit=${limit}&offset=${offset}${providerString}${directionsString}`;
-	console.log(`Making request for ${url} with Accept: "${format}"`);
+	// console.log(`Making request for ${url} with Accept: "${format}"`);
 	const response = await fetch(url, {
 		headers: {
 			Accept: `${format}`,
@@ -119,26 +120,47 @@ async function fetchAndFormatStrikes(
 		const links = parseLinkHeader(linkHeader);
 		strikesRemaining = links?.next !== undefined && links?.next !== null;
 	}
-	console.log(`Strikes remaining: ${strikesRemaining}`);
+	// console.log(`Strikes remaining: ${strikesRemaining}`);
 	const strikeCollection = await getFormattedStrikes(format, response);
 	return {
 		strikeCollection,
 		strikesRemaining,
 	};
 }
-// async function fetchAndFormatStrikesAndFormatRetryingOnFail(format: SupportedMimeType.GeoJson, params: StrikeQueryParameters): Promise<LightningFeatureCollectionV3>;
-// async function fetchAndFormatStrikesAndFormatRetryingOnFail(format: SupportedMimeType.GeoJsonV3, params: StrikeQueryParameters): Promise<LightningFeatureCollectionV3>;
-// async function fetchAndFormatStrikesAndFormatRetryingOnFail(format: SupportedMimeType.GeoJsonV2, params: StrikeQueryParameters): Promise<LightningFeatureCollectionV2>;
-// async function fetchAndFormatStrikesAndFormatRetryingOnFail(format: SupportedMimeType.Blitzen, params: StrikeQueryParameters): Promise<BlitzenVersion3>;
-// async function fetchAndFormatStrikesAndFormatRetryingOnFail(format: SupportedMimeType.BlitzenV3, params: StrikeQueryParameters): Promise<BlitzenVersion3>;
-// async function fetchAndFormatStrikesAndFormatRetryingOnFail(format: SupportedMimeType.BlitzenV2, params: StrikeQueryParameters): Promise<BlitzenVersion2>;
-// async function fetchAndFormatStrikesAndFormatRetryingOnFail(format: SupportedMimeType.BlitzenV1, params: StrikeQueryParameters): Promise<BlitzenVersion1>;
+async function fetchAndFormatStrikesAndFormatRetryingOnFail(
+	format: SupportedMimeType.GeoJson,
+	params: StrikeQueryParameters
+): Promise<ApiResponse<LightningFeatureCollectionV3>>;
+async function fetchAndFormatStrikesAndFormatRetryingOnFail(
+	format: SupportedMimeType.GeoJsonV3,
+	params: StrikeQueryParameters
+): Promise<ApiResponse<LightningFeatureCollectionV3>>;
+async function fetchAndFormatStrikesAndFormatRetryingOnFail(
+	format: SupportedMimeType.GeoJsonV2,
+	params: StrikeQueryParameters
+): Promise<ApiResponse<LightningFeatureCollectionV2>>;
+async function fetchAndFormatStrikesAndFormatRetryingOnFail(
+	format: SupportedMimeType.Blitzen,
+	params: StrikeQueryParameters
+): Promise<ApiResponse<BlitzenCollectionV3>>;
+async function fetchAndFormatStrikesAndFormatRetryingOnFail(
+	format: SupportedMimeType.BlitzenV3,
+	params: StrikeQueryParameters
+): Promise<ApiResponse<BlitzenCollectionV3>>;
+async function fetchAndFormatStrikesAndFormatRetryingOnFail(
+	format: SupportedMimeType.BlitzenV2,
+	params: StrikeQueryParameters
+): Promise<ApiResponse<BlitzenCollectionV2>>;
+async function fetchAndFormatStrikesAndFormatRetryingOnFail(
+	format: SupportedMimeType.BlitzenV1,
+	params: StrikeQueryParameters
+): Promise<ApiResponse<BlitzenCollectionV1>>;
+async function fetchAndFormatStrikesAndFormatRetryingOnFail(format: SupportedMimeType.CSV, params: StrikeQueryParameters): Promise<ApiResponse<CSV>>;
 async function fetchAndFormatStrikesAndFormatRetryingOnFail(format: SupportedMimeType.KML, queryParameters: StrikeQueryParameters): Promise<ApiResponse<KML>>;
 async function fetchAndFormatStrikesAndFormatRetryingOnFail<T extends StrikeCollectionType>(
 	format: SupportedMimeType,
 	queryParameters: StrikeQueryParameters
 ): Promise<ApiResponse<T>>;
-// async function fetchAndFormatStrikesAndFormatRetryingOnFail(format: SupportedMimeType.CSV, params: StrikeQueryParameters): Promise<Csv>;
 async function fetchAndFormatStrikesAndFormatRetryingOnFail(
 	format: SupportedMimeType,
 	queryParameters: StrikeQueryParameters
