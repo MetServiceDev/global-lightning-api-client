@@ -99,12 +99,35 @@ class CSVStrikeCollection extends StrikeCollection<CSV> {
 		};
 	}
 	async mergeCollection(collectionToMerge: StrikeCollection<CSV>) {
-		// FIXME/TODO: This should rearrange columns of the second collection if the headers aren't aligned
 		const collection = await this.collection;
 		const nextCollection = await collectionToMerge.collection;
+		let rowsToAdd = nextCollection.body;
+		if (collection.header !== nextCollection.header) {
+			const originalHeader = collection.header.split(',');
+			const getHeaderOrder = (acc: { [key: string]: number }, headerName: string, index: number) => {
+				acc[headerName] = index;
+				return acc;
+			};
+			const headerOrderToSwapTo = originalHeader.reduce(getHeaderOrder, {});
+			const currentHeaderOrder = nextCollection.header.split(',').reduce(getHeaderOrder, {});
+
+			// for each row of collection, swap indicies
+			rowsToAdd = rowsToAdd.map((row) => {
+				const currentColumns = row.split(',');
+
+				const updatedColumns = Object.keys(headerOrderToSwapTo).reduce((newItem: string[], headerName) => {
+					const newIndex = headerOrderToSwapTo[headerName];
+					const actualIndex = currentHeaderOrder[headerName];
+					newItem[newIndex] = currentColumns[actualIndex];
+					return newItem;
+				}, []);
+
+				return updatedColumns.join(',');
+			});
+		}
 		return {
 			header: collection.header,
-			body: collection.body.concat(nextCollection.body),
+			body: collection.body.concat(rowsToAdd),
 		};
 	}
 	async toString() {

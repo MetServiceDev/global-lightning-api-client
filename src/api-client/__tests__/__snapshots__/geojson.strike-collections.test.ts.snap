@@ -1,0 +1,2307 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When parsing GeoJSON When parsing GeoJSON V2 should be able to merge multiple collections 1`] = `
+Object {
+  "features": Array [
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.911369,
+          3.79772,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDAzMjMtMTMuNkdST1VORDEwNS45MTEzNjkzLjc5NzcyIg==",
+      "properties": Object {
+        "amplitude": -13.6,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.323Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.645326,
+          39.344666,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MjgwQ0xPVUQtNzYuNjQ1MzI2MzkuMzQ0NjY2Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.628Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.516297,
+          39.093173,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MjktNi40R1JPVU5ELTc2LjUxNjI5NzM5LjA5MzE3MyI=",
+      "properties": Object {
+        "amplitude": -6.4,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.629Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.751111,
+          39.359796,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEwQ0xPVUQtNzYuNzUxMTExMzkuMzU5Nzk2Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.631Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.699283,
+          39.357346,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEwQ0xPVUQtNzYuNjk5MjgzMzkuMzU3MzQ2Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.631Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.627881,
+          39.360246,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEtNjYuMkdST1VORC03Ni42Mjc4ODEzOS4zNjAyNDYi",
+      "properties": Object {
+        "amplitude": -66.2,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.631Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.623955,
+          39.355165,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEtNjVHUk9VTkQtNzYuNjIzOTU1MzkuMzU1MTY1Ig==",
+      "properties": Object {
+        "amplitude": -65,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.631Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.666255,
+          39.283483,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMwQ0xPVUQtNzYuNjY2MjU1MzkuMjgzNDgzIg==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.653Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.568837,
+          39.355049,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMtMjAuM0dST1VORC03Ni41Njg4MzczOS4zNTUwNDki",
+      "properties": Object {
+        "amplitude": -20.3,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.653Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.522296,
+          39.390466,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMwQ0xPVUQtNzYuNTIyMjk2MzkuMzkwNDY2Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.653Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -80.874821,
+          34.163358,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjAzODUwQ0xPVUQtODAuODc0ODIxMzQuMTYzMzU4Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:01:00.385Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -82.357371,
+          30.250675,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjA1NTItMjZHUk9VTkQtODIuMzU3MzcxMzAuMjUwNjc1Ig==",
+      "properties": Object {
+        "amplitude": -26,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:01:00.552Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -82.353037,
+          30.263559,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjA1NTIwQ0xPVUQtODIuMzUzMDM3MzAuMjYzNTU5Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:01:00.552Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -91.441549,
+          16.24059,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjA4MDAtNDEuM0dST1VORC05MS40NDE1NDkxNi4yNDA1OSI=",
+      "properties": Object {
+        "amplitude": -41.3,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:01:00.800Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          26.773836,
+          59.46069,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEwMDAtMjUuMkdST1VORDI2Ljc3MzgzNjU5LjQ2MDY5Ig==",
+      "properties": Object {
+        "amplitude": -25.2,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:01:01.000Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          26.923863,
+          59.507565,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEwMjgtMTUuMUdST1VORDI2LjkyMzg2MzU5LjUwNzU2NSI=",
+      "properties": Object {
+        "amplitude": -15.1,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:01:01.028Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          26.904206,
+          59.500731,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEwNzctMTRHUk9VTkQyNi45MDQyMDY1OS41MDA3MzEi",
+      "properties": Object {
+        "amplitude": -14,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:01:01.077Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          11.790852,
+          56.359199,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEyOTY5NS4zR1JPVU5EMTEuNzkwODUyNTYuMzU5MTk5Ig==",
+      "properties": Object {
+        "amplitude": 95.3,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:01:01.296Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -101.650011,
+          32.374309,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEzODIwQ0xPVUQtMTAxLjY1MDAxMTMyLjM3NDMwOSI=",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:01:01.382Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -101.366501,
+          32.777182,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEzODItMjkuOUdST1VORC0xMDEuMzY2NTAxMzIuNzc3MTgyIg==",
+      "properties": Object {
+        "amplitude": -29.9,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:01:01.382Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -79.357062,
+          49.79451,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjAwNzctNTYuNkdST1VORC03OS4zNTcwNjI0OS43OTQ1MSI=",
+      "properties": Object {
+        "amplitude": -56.6,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:02:00.077Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -101.955629,
+          39.873289,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjAyMzUyOC43R1JPVU5ELTEwMS45NTU2MjkzOS44NzMyODki",
+      "properties": Object {
+        "amplitude": 28.7,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:02:00.235Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -101.995631,
+          39.87736,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjAyODkxOUdST1VORC0xMDEuOTk1NjMxMzkuODc3MzYi",
+      "properties": Object {
+        "amplitude": 19,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:02:00.289Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.181056,
+          3.354772,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjA5ODEtMTMuMUdST1VORDEwNS4xODEwNTYzLjM1NDc3MiI=",
+      "properties": Object {
+        "amplitude": -13.1,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:02:00.981Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -79.969339,
+          35.098912,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjEzNjQtMTguMkdST1VORC03OS45NjkzMzkzNS4wOTg5MTIi",
+      "properties": Object {
+        "amplitude": -18.2,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:02:01.364Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -80.069913,
+          34.980473,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjEzNzAtMzUuOUdST1VORC04MC4wNjk5MTMzNC45ODA0NzMi",
+      "properties": Object {
+        "amplitude": -35.9,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:02:01.370Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.974937,
+          3.83109,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjE1MTctMjkuOEdST1VORDEwNS45NzQ5MzczLjgzMTA5Ig==",
+      "properties": Object {
+        "amplitude": -29.8,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:02:01.517Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.677619,
+          3.858295,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjE1NDQwQ0xPVUQxMDUuNjc3NjE5My44NTgyOTUi",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:02:01.544Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.9039,
+          3.811184,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjE1NDQtMTFHUk9VTkQxMDUuOTAzOTMuODExMTg0Ig==",
+      "properties": Object {
+        "amplitude": -11,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:02:01.544Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.678063,
+          3.858444,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjE1NjEtNy44R1JPVU5EMTA1LjY3ODA2MzMuODU4NDQ0Ig==",
+      "properties": Object {
+        "amplitude": -7.8,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:02:01.561Z",
+      },
+      "type": "Feature",
+    },
+  ],
+  "type": "FeatureCollection",
+}
+`;
+
+exports[`When parsing GeoJSON When parsing GeoJSON V2 should be able to merge two collections 1`] = `
+Object {
+  "features": Array [
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.911369,
+          3.79772,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDAzMjMtMTMuNkdST1VORDEwNS45MTEzNjkzLjc5NzcyIg==",
+      "properties": Object {
+        "amplitude": -13.6,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.323Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.645326,
+          39.344666,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MjgwQ0xPVUQtNzYuNjQ1MzI2MzkuMzQ0NjY2Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.628Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.516297,
+          39.093173,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MjktNi40R1JPVU5ELTc2LjUxNjI5NzM5LjA5MzE3MyI=",
+      "properties": Object {
+        "amplitude": -6.4,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.629Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.751111,
+          39.359796,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEwQ0xPVUQtNzYuNzUxMTExMzkuMzU5Nzk2Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.631Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.699283,
+          39.357346,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEwQ0xPVUQtNzYuNjk5MjgzMzkuMzU3MzQ2Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.631Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.627881,
+          39.360246,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEtNjYuMkdST1VORC03Ni42Mjc4ODEzOS4zNjAyNDYi",
+      "properties": Object {
+        "amplitude": -66.2,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.631Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.623955,
+          39.355165,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEtNjVHUk9VTkQtNzYuNjIzOTU1MzkuMzU1MTY1Ig==",
+      "properties": Object {
+        "amplitude": -65,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.631Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.666255,
+          39.283483,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMwQ0xPVUQtNzYuNjY2MjU1MzkuMjgzNDgzIg==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.653Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.568837,
+          39.355049,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMtMjAuM0dST1VORC03Ni41Njg4MzczOS4zNTUwNDki",
+      "properties": Object {
+        "amplitude": -20.3,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.653Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.522296,
+          39.390466,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMwQ0xPVUQtNzYuNTIyMjk2MzkuMzkwNDY2Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.653Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -80.874821,
+          34.163358,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjAzODUwQ0xPVUQtODAuODc0ODIxMzQuMTYzMzU4Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:01:00.385Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -82.357371,
+          30.250675,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjA1NTItMjZHUk9VTkQtODIuMzU3MzcxMzAuMjUwNjc1Ig==",
+      "properties": Object {
+        "amplitude": -26,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:01:00.552Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -82.353037,
+          30.263559,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjA1NTIwQ0xPVUQtODIuMzUzMDM3MzAuMjYzNTU5Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:01:00.552Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -91.441549,
+          16.24059,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjA4MDAtNDEuM0dST1VORC05MS40NDE1NDkxNi4yNDA1OSI=",
+      "properties": Object {
+        "amplitude": -41.3,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:01:00.800Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          26.773836,
+          59.46069,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEwMDAtMjUuMkdST1VORDI2Ljc3MzgzNjU5LjQ2MDY5Ig==",
+      "properties": Object {
+        "amplitude": -25.2,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:01:01.000Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          26.923863,
+          59.507565,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEwMjgtMTUuMUdST1VORDI2LjkyMzg2MzU5LjUwNzU2NSI=",
+      "properties": Object {
+        "amplitude": -15.1,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:01:01.028Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          26.904206,
+          59.500731,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEwNzctMTRHUk9VTkQyNi45MDQyMDY1OS41MDA3MzEi",
+      "properties": Object {
+        "amplitude": -14,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:01:01.077Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          11.790852,
+          56.359199,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEyOTY5NS4zR1JPVU5EMTEuNzkwODUyNTYuMzU5MTk5Ig==",
+      "properties": Object {
+        "amplitude": 95.3,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:01:01.296Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -101.650011,
+          32.374309,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEzODIwQ0xPVUQtMTAxLjY1MDAxMTMyLjM3NDMwOSI=",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:01:01.382Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -101.366501,
+          32.777182,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEzODItMjkuOUdST1VORC0xMDEuMzY2NTAxMzIuNzc3MTgyIg==",
+      "properties": Object {
+        "amplitude": -29.9,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:01:01.382Z",
+      },
+      "type": "Feature",
+    },
+  ],
+  "type": "FeatureCollection",
+}
+`;
+
+exports[`When parsing GeoJSON When parsing GeoJSON V2 should return valid GeoJSON V2 1`] = `
+Object {
+  "features": Array [
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.911369,
+          3.79772,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDAzMjMtMTMuNkdST1VORDEwNS45MTEzNjkzLjc5NzcyIg==",
+      "properties": Object {
+        "amplitude": -13.6,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.323Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.645326,
+          39.344666,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MjgwQ0xPVUQtNzYuNjQ1MzI2MzkuMzQ0NjY2Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.628Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.516297,
+          39.093173,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MjktNi40R1JPVU5ELTc2LjUxNjI5NzM5LjA5MzE3MyI=",
+      "properties": Object {
+        "amplitude": -6.4,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.629Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.751111,
+          39.359796,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEwQ0xPVUQtNzYuNzUxMTExMzkuMzU5Nzk2Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.631Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.699283,
+          39.357346,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEwQ0xPVUQtNzYuNjk5MjgzMzkuMzU3MzQ2Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.631Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.627881,
+          39.360246,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEtNjYuMkdST1VORC03Ni42Mjc4ODEzOS4zNjAyNDYi",
+      "properties": Object {
+        "amplitude": -66.2,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.631Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.623955,
+          39.355165,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEtNjVHUk9VTkQtNzYuNjIzOTU1MzkuMzU1MTY1Ig==",
+      "properties": Object {
+        "amplitude": -65,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.631Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.666255,
+          39.283483,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMwQ0xPVUQtNzYuNjY2MjU1MzkuMjgzNDgzIg==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.653Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.568837,
+          39.355049,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMtMjAuM0dST1VORC03Ni41Njg4MzczOS4zNTUwNDki",
+      "properties": Object {
+        "amplitude": -20.3,
+        "direction": "GROUND",
+        "observation_time": "2020-06-20T00:00:00.653Z",
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.522296,
+          39.390466,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMwQ0xPVUQtNzYuNTIyMjk2MzkuMzkwNDY2Ig==",
+      "properties": Object {
+        "amplitude": 0,
+        "direction": "CLOUD",
+        "observation_time": "2020-06-20T00:00:00.653Z",
+      },
+      "type": "Feature",
+    },
+  ],
+  "type": "FeatureCollection",
+}
+`;
+
+exports[`When parsing GeoJSON when parsing GeoJSON V3 should be able to merge multiple collections 1`] = `
+Object {
+  "features": Array [
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.911369,
+          3.79772,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDAzMjMtMTMuNkdST1VORDEwNS45MTEzNjkzLjc5NzcyIg==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.323Z",
+        "ellipse_bearing": -12,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -13.6,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.323,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.645326,
+          39.344666,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MjgwQ0xPVUQtNzYuNjQ1MzI2MzkuMzQ0NjY2Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.628Z",
+        "ellipse_bearing": -49,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.628,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.516297,
+          39.093173,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MjktNi40R1JPVU5ELTc2LjUxNjI5NzM5LjA5MzE3MyI=",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.629Z",
+        "ellipse_bearing": 9,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -6.4,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.629,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.751111,
+          39.359796,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEwQ0xPVUQtNzYuNzUxMTExMzkuMzU5Nzk2Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.631Z",
+        "ellipse_bearing": -28,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.631,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.699283,
+          39.357346,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEwQ0xPVUQtNzYuNjk5MjgzMzkuMzU3MzQ2Ig==",
+      "properties": Object {
+        "GDOP": 6,
+        "dateTime": "2020-06-20T00:00:00.631Z",
+        "ellipse_bearing": -80,
+        "ellipse_major_axis": 1.75,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.631,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.627881,
+          39.360246,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEtNjYuMkdST1VORC03Ni42Mjc4ODEzOS4zNjAyNDYi",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.631Z",
+        "ellipse_bearing": -41,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -66.2,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.631,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.623955,
+          39.355165,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEtNjVHUk9VTkQtNzYuNjIzOTU1MzkuMzU1MTY1Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.631Z",
+        "ellipse_bearing": 82,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "kA": -65,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.631,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.666255,
+          39.283483,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMwQ0xPVUQtNzYuNjY2MjU1MzkuMjgzNDgzIg==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.653Z",
+        "ellipse_bearing": -52,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.653,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.568837,
+          39.355049,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMtMjAuM0dST1VORC03Ni41Njg4MzczOS4zNTUwNDki",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.653Z",
+        "ellipse_bearing": -1,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -20.3,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.653,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.522296,
+          39.390466,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMwQ0xPVUQtNzYuNTIyMjk2MzkuMzkwNDY2Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.653Z",
+        "ellipse_bearing": -74,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.653,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -80.874821,
+          34.163358,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjAzODUwQ0xPVUQtODAuODc0ODIxMzQuMTYzMzU4Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:01:00.385Z",
+        "ellipse_bearing": -74,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611260.385,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -82.357371,
+          30.250675,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjA1NTItMjZHUk9VTkQtODIuMzU3MzcxMzAuMjUwNjc1Ig==",
+      "properties": Object {
+        "GDOP": 2,
+        "dateTime": "2020-06-20T00:01:00.552Z",
+        "ellipse_bearing": -89,
+        "ellipse_major_axis": 0.75,
+        "ellipse_minor_axis": 0.25,
+        "kA": -26,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611260.552,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -82.353037,
+          30.263559,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjA1NTIwQ0xPVUQtODIuMzUzMDM3MzAuMjYzNTU5Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:01:00.552Z",
+        "ellipse_bearing": 83,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611260.552,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -91.441549,
+          16.24059,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjA4MDAtNDEuM0dST1VORC05MS40NDE1NDkxNi4yNDA1OSI=",
+      "properties": Object {
+        "GDOP": 6,
+        "dateTime": "2020-06-20T00:01:00.800Z",
+        "ellipse_bearing": 11,
+        "ellipse_major_axis": 1.75,
+        "ellipse_minor_axis": 0.25,
+        "kA": -41.3,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611260.8,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          26.773836,
+          59.46069,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEwMDAtMjUuMkdST1VORDI2Ljc3MzgzNjU5LjQ2MDY5Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:01:01.000Z",
+        "ellipse_bearing": 7,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "kA": -25.2,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611261,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          26.923863,
+          59.507565,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEwMjgtMTUuMUdST1VORDI2LjkyMzg2MzU5LjUwNzU2NSI=",
+      "properties": Object {
+        "GDOP": 3,
+        "dateTime": "2020-06-20T00:01:01.028Z",
+        "ellipse_bearing": 11,
+        "ellipse_major_axis": 0.75,
+        "ellipse_minor_axis": 0.25,
+        "kA": -15.1,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611261.028,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          26.904206,
+          59.500731,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEwNzctMTRHUk9VTkQyNi45MDQyMDY1OS41MDA3MzEi",
+      "properties": Object {
+        "GDOP": 3,
+        "dateTime": "2020-06-20T00:01:01.077Z",
+        "ellipse_bearing": 11,
+        "ellipse_major_axis": 1,
+        "ellipse_minor_axis": 0.25,
+        "kA": -14,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611261.077,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          11.790852,
+          56.359199,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEyOTY5NS4zR1JPVU5EMTEuNzkwODUyNTYuMzU5MTk5Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:01:01.296Z",
+        "ellipse_bearing": 19,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": 95.3,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611261.296,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -101.650011,
+          32.374309,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEzODIwQ0xPVUQtMTAxLjY1MDAxMTMyLjM3NDMwOSI=",
+      "properties": Object {
+        "GDOP": 16,
+        "dateTime": "2020-06-20T00:01:01.382Z",
+        "ellipse_bearing": 34,
+        "ellipse_major_axis": 4.25,
+        "ellipse_minor_axis": 0.5,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611261.382,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -101.366501,
+          32.777182,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEzODItMjkuOUdST1VORC0xMDEuMzY2NTAxMzIuNzc3MTgyIg==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:01:01.382Z",
+        "ellipse_bearing": -24,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -29.9,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611261.382,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -79.357062,
+          49.79451,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjAwNzctNTYuNkdST1VORC03OS4zNTcwNjI0OS43OTQ1MSI=",
+      "properties": Object {
+        "GDOP": 2,
+        "dateTime": "2020-06-20T00:02:00.077Z",
+        "ellipse_bearing": 23,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "kA": -56.6,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611320.077,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -101.955629,
+          39.873289,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjAyMzUyOC43R1JPVU5ELTEwMS45NTU2MjkzOS44NzMyODki",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:02:00.235Z",
+        "ellipse_bearing": 29,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": 28.7,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611320.235,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -101.995631,
+          39.87736,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjAyODkxOUdST1VORC0xMDEuOTk1NjMxMzkuODc3MzYi",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:02:00.289Z",
+        "ellipse_bearing": -11,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": 19,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611320.289,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.181056,
+          3.354772,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjA5ODEtMTMuMUdST1VORDEwNS4xODEwNTYzLjM1NDc3MiI=",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:02:00.981Z",
+        "ellipse_bearing": -9,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -13.1,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611320.981,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -79.969339,
+          35.098912,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjEzNjQtMTguMkdST1VORC03OS45NjkzMzkzNS4wOTg5MTIi",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:02:01.364Z",
+        "ellipse_bearing": -76,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "kA": -18.2,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611321.364,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -80.069913,
+          34.980473,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjEzNzAtMzUuOUdST1VORC04MC4wNjk5MTMzNC45ODA0NzMi",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:02:01.370Z",
+        "ellipse_bearing": -21,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -35.9,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611321.37,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.974937,
+          3.83109,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjE1MTctMjkuOEdST1VORDEwNS45NzQ5MzczLjgzMTA5Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:02:01.517Z",
+        "ellipse_bearing": -24,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -29.8,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611321.517,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.677619,
+          3.858295,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjE1NDQwQ0xPVUQxMDUuNjc3NjE5My44NTgyOTUi",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:02:01.544Z",
+        "ellipse_bearing": 16,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611321.544,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.9039,
+          3.811184,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjE1NDQtMTFHUk9VTkQxMDUuOTAzOTMuODExMTg0Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:02:01.544Z",
+        "ellipse_bearing": -8,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -11,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611321.544,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.678063,
+          3.858444,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEzMjE1NjEtNy44R1JPVU5EMTA1LjY3ODA2MzMuODU4NDQ0Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:02:01.561Z",
+        "ellipse_bearing": 16,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "kA": -7.8,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611321.561,
+      },
+      "type": "Feature",
+    },
+  ],
+  "type": "FeatureCollection",
+}
+`;
+
+exports[`When parsing GeoJSON when parsing GeoJSON V3 should be able to merge two collections 1`] = `
+Object {
+  "features": Array [
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.911369,
+          3.79772,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDAzMjMtMTMuNkdST1VORDEwNS45MTEzNjkzLjc5NzcyIg==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.323Z",
+        "ellipse_bearing": -12,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -13.6,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.323,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.645326,
+          39.344666,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MjgwQ0xPVUQtNzYuNjQ1MzI2MzkuMzQ0NjY2Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.628Z",
+        "ellipse_bearing": -49,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.628,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.516297,
+          39.093173,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MjktNi40R1JPVU5ELTc2LjUxNjI5NzM5LjA5MzE3MyI=",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.629Z",
+        "ellipse_bearing": 9,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -6.4,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.629,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.751111,
+          39.359796,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEwQ0xPVUQtNzYuNzUxMTExMzkuMzU5Nzk2Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.631Z",
+        "ellipse_bearing": -28,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.631,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.699283,
+          39.357346,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEwQ0xPVUQtNzYuNjk5MjgzMzkuMzU3MzQ2Ig==",
+      "properties": Object {
+        "GDOP": 6,
+        "dateTime": "2020-06-20T00:00:00.631Z",
+        "ellipse_bearing": -80,
+        "ellipse_major_axis": 1.75,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.631,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.627881,
+          39.360246,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEtNjYuMkdST1VORC03Ni42Mjc4ODEzOS4zNjAyNDYi",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.631Z",
+        "ellipse_bearing": -41,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -66.2,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.631,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.623955,
+          39.355165,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEtNjVHUk9VTkQtNzYuNjIzOTU1MzkuMzU1MTY1Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.631Z",
+        "ellipse_bearing": 82,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "kA": -65,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.631,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.666255,
+          39.283483,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMwQ0xPVUQtNzYuNjY2MjU1MzkuMjgzNDgzIg==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.653Z",
+        "ellipse_bearing": -52,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.653,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.568837,
+          39.355049,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMtMjAuM0dST1VORC03Ni41Njg4MzczOS4zNTUwNDki",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.653Z",
+        "ellipse_bearing": -1,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -20.3,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.653,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.522296,
+          39.390466,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMwQ0xPVUQtNzYuNTIyMjk2MzkuMzkwNDY2Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.653Z",
+        "ellipse_bearing": -74,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.653,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -80.874821,
+          34.163358,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjAzODUwQ0xPVUQtODAuODc0ODIxMzQuMTYzMzU4Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:01:00.385Z",
+        "ellipse_bearing": -74,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611260.385,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -82.357371,
+          30.250675,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjA1NTItMjZHUk9VTkQtODIuMzU3MzcxMzAuMjUwNjc1Ig==",
+      "properties": Object {
+        "GDOP": 2,
+        "dateTime": "2020-06-20T00:01:00.552Z",
+        "ellipse_bearing": -89,
+        "ellipse_major_axis": 0.75,
+        "ellipse_minor_axis": 0.25,
+        "kA": -26,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611260.552,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -82.353037,
+          30.263559,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjA1NTIwQ0xPVUQtODIuMzUzMDM3MzAuMjYzNTU5Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:01:00.552Z",
+        "ellipse_bearing": 83,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611260.552,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -91.441549,
+          16.24059,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjA4MDAtNDEuM0dST1VORC05MS40NDE1NDkxNi4yNDA1OSI=",
+      "properties": Object {
+        "GDOP": 6,
+        "dateTime": "2020-06-20T00:01:00.800Z",
+        "ellipse_bearing": 11,
+        "ellipse_major_axis": 1.75,
+        "ellipse_minor_axis": 0.25,
+        "kA": -41.3,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611260.8,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          26.773836,
+          59.46069,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEwMDAtMjUuMkdST1VORDI2Ljc3MzgzNjU5LjQ2MDY5Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:01:01.000Z",
+        "ellipse_bearing": 7,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "kA": -25.2,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611261,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          26.923863,
+          59.507565,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEwMjgtMTUuMUdST1VORDI2LjkyMzg2MzU5LjUwNzU2NSI=",
+      "properties": Object {
+        "GDOP": 3,
+        "dateTime": "2020-06-20T00:01:01.028Z",
+        "ellipse_bearing": 11,
+        "ellipse_major_axis": 0.75,
+        "ellipse_minor_axis": 0.25,
+        "kA": -15.1,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611261.028,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          26.904206,
+          59.500731,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEwNzctMTRHUk9VTkQyNi45MDQyMDY1OS41MDA3MzEi",
+      "properties": Object {
+        "GDOP": 3,
+        "dateTime": "2020-06-20T00:01:01.077Z",
+        "ellipse_bearing": 11,
+        "ellipse_major_axis": 1,
+        "ellipse_minor_axis": 0.25,
+        "kA": -14,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611261.077,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          11.790852,
+          56.359199,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEyOTY5NS4zR1JPVU5EMTEuNzkwODUyNTYuMzU5MTk5Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:01:01.296Z",
+        "ellipse_bearing": 19,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": 95.3,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611261.296,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -101.650011,
+          32.374309,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEzODIwQ0xPVUQtMTAxLjY1MDAxMTMyLjM3NDMwOSI=",
+      "properties": Object {
+        "GDOP": 16,
+        "dateTime": "2020-06-20T00:01:01.382Z",
+        "ellipse_bearing": 34,
+        "ellipse_major_axis": 4.25,
+        "ellipse_minor_axis": 0.5,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611261.382,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -101.366501,
+          32.777182,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyNjEzODItMjkuOUdST1VORC0xMDEuMzY2NTAxMzIuNzc3MTgyIg==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:01:01.382Z",
+        "ellipse_bearing": -24,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -29.9,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611261.382,
+      },
+      "type": "Feature",
+    },
+  ],
+  "type": "FeatureCollection",
+}
+`;
+
+exports[`When parsing GeoJSON when parsing GeoJSON V3 should return valid GeoJSON V3 1`] = `
+Object {
+  "features": Array [
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          105.911369,
+          3.79772,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDAzMjMtMTMuNkdST1VORDEwNS45MTEzNjkzLjc5NzcyIg==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.323Z",
+        "ellipse_bearing": -12,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -13.6,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.323,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.645326,
+          39.344666,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MjgwQ0xPVUQtNzYuNjQ1MzI2MzkuMzQ0NjY2Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.628Z",
+        "ellipse_bearing": -49,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.628,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.516297,
+          39.093173,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MjktNi40R1JPVU5ELTc2LjUxNjI5NzM5LjA5MzE3MyI=",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.629Z",
+        "ellipse_bearing": 9,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -6.4,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.629,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.751111,
+          39.359796,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEwQ0xPVUQtNzYuNzUxMTExMzkuMzU5Nzk2Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.631Z",
+        "ellipse_bearing": -28,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.631,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.699283,
+          39.357346,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEwQ0xPVUQtNzYuNjk5MjgzMzkuMzU3MzQ2Ig==",
+      "properties": Object {
+        "GDOP": 6,
+        "dateTime": "2020-06-20T00:00:00.631Z",
+        "ellipse_bearing": -80,
+        "ellipse_major_axis": 1.75,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.631,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.627881,
+          39.360246,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEtNjYuMkdST1VORC03Ni42Mjc4ODEzOS4zNjAyNDYi",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.631Z",
+        "ellipse_bearing": -41,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -66.2,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.631,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.623955,
+          39.355165,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2MzEtNjVHUk9VTkQtNzYuNjIzOTU1MzkuMzU1MTY1Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.631Z",
+        "ellipse_bearing": 82,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "kA": -65,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.631,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.666255,
+          39.283483,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMwQ0xPVUQtNzYuNjY2MjU1MzkuMjgzNDgzIg==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.653Z",
+        "ellipse_bearing": -52,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.653,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.568837,
+          39.355049,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMtMjAuM0dST1VORC03Ni41Njg4MzczOS4zNTUwNDki",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.653Z",
+        "ellipse_bearing": -1,
+        "ellipse_major_axis": 0.25,
+        "ellipse_minor_axis": 0.25,
+        "kA": -20.3,
+        "source": "toa",
+        "strike_type": "GROUND",
+        "unixTime": 1592611200.653,
+      },
+      "type": "Feature",
+    },
+    Object {
+      "geometry": Object {
+        "coordinates": Array [
+          -76.522296,
+          39.390466,
+        ],
+        "type": "Point",
+      },
+      "id": "InRvYTE1OTI2MTEyMDA2NTMwQ0xPVUQtNzYuNTIyMjk2MzkuMzkwNDY2Ig==",
+      "properties": Object {
+        "GDOP": 1,
+        "dateTime": "2020-06-20T00:00:00.653Z",
+        "ellipse_bearing": -74,
+        "ellipse_major_axis": 0.5,
+        "ellipse_minor_axis": 0.25,
+        "source": "toa",
+        "strike_type": "CLOUD",
+        "unixTime": 1592611200.653,
+      },
+      "type": "Feature",
+    },
+  ],
+  "type": "FeatureCollection",
+}
+`;

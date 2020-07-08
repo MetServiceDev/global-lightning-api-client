@@ -30,16 +30,16 @@ export enum LightningStrikeDirection {
  * We also do not support GeoBufs at this point in time
  */
 export enum SupportedMimeType {
-	GeoJson = 'application/vnd.geo+json',
 	// GeoBuf = 'application/octet-stream',
 	KML = 'application/vnd.google-earth.kml+xml',
 	CSV = 'text/csv',
 	Blitzen = 'application/vnd.metraweather.blitzen',
-	BlitzenV1 = 'application/vnd.metraweather.blitzen.v1',
-	BlitzenV2 = 'application/vnd.metraweather.blitzen.v2',
 	BlitzenV3 = 'application/vnd.metraweather.blitzen.v3',
-	GeoJsonV2 = 'application/vnd.metraweather.lightning.geo+json.v2',
+	BlitzenV2 = 'application/vnd.metraweather.blitzen.v2',
+	BlitzenV1 = 'application/vnd.metraweather.blitzen.v1',
+	GeoJson = 'application/vnd.geo+json',
 	GeoJsonV3 = 'application/vnd.metraweather.lightning.geo+json.v3',
+	GeoJsonV2 = 'application/vnd.metraweather.lightning.geo+json.v2',
 }
 
 export enum SupportedVersion {
@@ -115,7 +115,7 @@ async function fetchAndFormatStrikes(
 	});
 	let strikesRemaining = false;
 	const linkHeader = response.headers.get('link');
-	if (linkHeader) {
+	if (linkHeader !== null) {
 		const links = parseLinkHeader(linkHeader);
 		strikesRemaining = links?.next !== undefined && links?.next !== null;
 	}
