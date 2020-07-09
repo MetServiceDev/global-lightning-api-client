@@ -9,9 +9,9 @@ import { CredentialType } from '../src';
 const defaultArguments: ExampleArguments = {
 	credentials: {
 		type: CredentialType.apiKey,
-		token: 'INSERT_YOUR_TOKEN_HERE',
+		token: '',
 	},
-	folderToDownloadStrikesTo: './example-output',
+	folderToDownloadStrikesTo: './dist/bin/example-output',
 };
 
 fetchAllFinishedData(defaultArguments);

@@ -98,7 +98,7 @@ async function fetchAndFormatStrikes(format: SupportedMimeType.BlitzenV2, params
 async function fetchAndFormatStrikes(format: SupportedMimeType.BlitzenV1, params: StrikeQueryParameters): Promise<ApiResponse<BlitzenCollectionV1>>;
 async function fetchAndFormatStrikes(format: SupportedMimeType.CSV, params: StrikeQueryParameters): Promise<ApiResponse<CSV>>;
 async function fetchAndFormatStrikes(format: SupportedMimeType.KML, params: StrikeQueryParameters): Promise<ApiResponse<KML>>;
-async function fetchAndFormatStrikes(format: SupportedMimeType, params: StrikeQueryParameters): Promise<ApiResponse<StrikeCollectionType>>;
+async function fetchAndFormatStrikes<T extends StrikeCollectionType>(format: SupportedMimeType, params: StrikeQueryParameters): Promise<ApiResponse<T>>;
 async function fetchAndFormatStrikes(
 	format: SupportedMimeType,
 	{ credentials, apiVersion, time, bbox, limit, offset, providers, directions }: StrikeQueryParameters
@@ -200,7 +200,7 @@ async function getFormattedStrikes(format: SupportedMimeType.BlitzenV2, response
 async function getFormattedStrikes(format: SupportedMimeType.BlitzenV1, response: Response): Promise<BlitzenStrikeCollection<BlitzenCollectionV1>>;
 async function getFormattedStrikes(format: SupportedMimeType.KML, response: Response): Promise<KMLStrikeCollection>;
 async function getFormattedStrikes(format: SupportedMimeType.CSV, response: Response): Promise<CSVStrikeCollection>;
-async function getFormattedStrikes<T extends StrikeCollectionType>(format: SupportedMimeType, response: Response): Promise<StrikeCollections>;
+async function getFormattedStrikes<T extends StrikeCollectionType>(format: SupportedMimeType, response: Response): Promise<StrikeCollection<T>>;
 async function getFormattedStrikes(format: SupportedMimeType, response: Response): Promise<StrikeCollections> {
 	switch (format) {
 		case SupportedMimeType.GeoJson: {

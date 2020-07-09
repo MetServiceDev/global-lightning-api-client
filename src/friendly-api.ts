@@ -1,4 +1,14 @@
-import { StrikeCollection, StrikeCollectionType, KML, LightningFeatureCollectionV3 } from './api-client/strike-collections';
+import {
+	StrikeCollection,
+	StrikeCollectionType,
+	KML,
+	LightningFeatureCollectionV3,
+	BlitzenCollectionV1,
+	BlitzenCollectionV3,
+	BlitzenCollectionV2,
+	CSV,
+	LightningFeatureCollectionV2,
+} from './api-client/strike-collections';
 import {
 	SupportedMimeType,
 	CredentialType,
@@ -8,7 +18,7 @@ import {
 	LightningDataNetworkProvider,
 	fetchAndFormatStrikesAndFormatRetryingOnFail,
 } from './api-client/strike-api';
-import { Duration, DateTime, Interval, DateObject } from 'luxon';
+import { Duration, DateTime, Interval } from 'luxon';
 import { mkdir, writeFile } from 'fs';
 import { promisify } from 'util';
 
@@ -94,18 +104,56 @@ const transformDurationTimeIntoDuration = (duration: TimeDuration): Duration => 
 };
 /**
  * Fetches strikes from the lightning API over the given time and area in a resilient fashion until all strikes that the API knows about have been received.
- * WARNING: This does not deal with out of order strikes. If a strike is not in the API as of request time (due to network propogation or other delays), then
- * this will not return it. Therefore, if you're using this for data within the last ten minutes, you will need to keep requesting that data until it is finalised.
  *
- * This should only be used for small queries and larger queries should be split up into multiple requests using this.
+ * WARNING: This does not deal well with out of order strikes. If a strike is not in the API as of request time (due to network propogation or other delays), then
+ * this will not return it. The merging of strike collections assumes that each collection has an entirely unique set of strikes. Therefore, if you're using this for
+ * data within the last ten minutes where this is not necessarily the case, you will need to keep requesting that data until it is finalised and removing duplicate strikes.
+ *
+ * This should only be used for small queries and larger queries should be split up into multiple requests to increase the parallelism.
  *
  * Algorithm:
  * - Fetch strikes for given values
- * 		- while there are still strikes to get (link header with next present), fetch again with an incrased offset
- * 		- Aggregate strikes
- * - return
+ * 		- while there are still strikes to get (link header with next present), fetch again with an increased offset
+ * 		- Naively aggregate strikes (relies on the API to return strikes in order and uniquely, so it adds each subsequent collection after each other without sorting or deduplication.
+ * 			This means if a strike is in multiple collections, it will be returned multiple times and strikes may appear out of order).
+ * - return aggregated strikes
+ *
  * NOTE: If the provider is not global, there may not be data in the given area
  */
+async function fetchAllStrikesOverAreaAndTime(format: SupportedMimeType.KML, query: ClosedIntervalStrikeQueryParameters): Promise<StrikeCollection<KML>>;
+async function fetchAllStrikesOverAreaAndTime(format: SupportedMimeType.CSV, query: ClosedIntervalStrikeQueryParameters): Promise<StrikeCollection<CSV>>;
+async function fetchAllStrikesOverAreaAndTime(
+	format: SupportedMimeType.GeoJson,
+	query: ClosedIntervalStrikeQueryParameters
+): Promise<StrikeCollection<LightningFeatureCollectionV3>>;
+async function fetchAllStrikesOverAreaAndTime(
+	format: SupportedMimeType.GeoJsonV3,
+	query: ClosedIntervalStrikeQueryParameters
+): Promise<StrikeCollection<LightningFeatureCollectionV3>>;
+async function fetchAllStrikesOverAreaAndTime(
+	format: SupportedMimeType.GeoJsonV2,
+	query: ClosedIntervalStrikeQueryParameters
+): Promise<StrikeCollection<LightningFeatureCollectionV2>>;
+async function fetchAllStrikesOverAreaAndTime(
+	format: SupportedMimeType.Blitzen,
+	query: ClosedIntervalStrikeQueryParameters
+): Promise<StrikeCollection<BlitzenCollectionV3>>;
+async function fetchAllStrikesOverAreaAndTime(
+	format: SupportedMimeType.BlitzenV3,
+	query: ClosedIntervalStrikeQueryParameters
+): Promise<StrikeCollection<BlitzenCollectionV3>>;
+async function fetchAllStrikesOverAreaAndTime(
+	format: SupportedMimeType.BlitzenV2,
+	query: ClosedIntervalStrikeQueryParameters
+): Promise<StrikeCollection<BlitzenCollectionV2>>;
+async function fetchAllStrikesOverAreaAndTime(
+	format: SupportedMimeType.BlitzenV1,
+	query: ClosedIntervalStrikeQueryParameters
+): Promise<StrikeCollection<BlitzenCollectionV1>>;
+async function fetchAllStrikesOverAreaAndTime<T extends StrikeCollectionType>(
+	format: SupportedMimeType,
+	query: ClosedIntervalStrikeQueryParameters
+): Promise<StrikeCollection<T>>;
 async function fetchAllStrikesOverAreaAndTime(
 	format: SupportedMimeType,
 	query: ClosedIntervalStrikeQueryParameters
@@ -151,11 +199,53 @@ async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
 	maximumQueries?: number
 ): Promise<StrikeCollectionAndTime<KML>[]>;
 async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+	format: SupportedMimeType.GeoJson,
+	chunkDuration: TimeDuration,
+	query: ClosedIntervalStrikeQueryParameters,
+	maximumQueries?: number
+): Promise<StrikeCollectionAndTime<LightningFeatureCollectionV3>[]>;
+async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+	format: SupportedMimeType.GeoJsonV3,
+	chunkDuration: TimeDuration,
+	query: ClosedIntervalStrikeQueryParameters,
+	maximumQueries?: number
+): Promise<StrikeCollectionAndTime<LightningFeatureCollectionV3>[]>;
+async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+	format: SupportedMimeType.GeoJsonV2,
+	chunkDuration: TimeDuration,
+	query: ClosedIntervalStrikeQueryParameters,
+	maximumQueries?: number
+): Promise<StrikeCollectionAndTime<LightningFeatureCollectionV2>[]>;
+async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+	format: SupportedMimeType.Blitzen,
+	chunkDuration: TimeDuration,
+	query: ClosedIntervalStrikeQueryParameters,
+	maximumQueries?: number
+): Promise<StrikeCollectionAndTime<BlitzenCollectionV3>[]>;
+async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+	format: SupportedMimeType.BlitzenV3,
+	chunkDuration: TimeDuration,
+	query: ClosedIntervalStrikeQueryParameters,
+	maximumQueries?: number
+): Promise<StrikeCollectionAndTime<BlitzenCollectionV3>[]>;
+async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+	format: SupportedMimeType.BlitzenV2,
+	chunkDuration: TimeDuration,
+	query: ClosedIntervalStrikeQueryParameters,
+	maximumQueries?: number
+): Promise<StrikeCollectionAndTime<BlitzenCollectionV2>[]>;
+async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+	format: SupportedMimeType.BlitzenV1,
+	chunkDuration: TimeDuration,
+	query: ClosedIntervalStrikeQueryParameters,
+	maximumQueries?: number
+): Promise<StrikeCollectionAndTime<BlitzenCollectionV1>[]>;
+async function fetchAllHistoricStrikesOverAreaAndTimeInChunks<T extends StrikeCollectionType>(
 	format: SupportedMimeType,
 	chunkDuration: TimeDuration,
 	query: ClosedIntervalStrikeQueryParameters,
 	maximumQueries?: number
-): Promise<StrikeCollectionAndTime<StrikeCollectionType>[]>;
+): Promise<StrikeCollectionAndTime<T>[]>;
 async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
 	format: SupportedMimeType,
 	chunkDuration: TimeDuration,
@@ -193,6 +283,56 @@ async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
 	return processedQueries;
 }
 
+async function fetchAllFinalisedStrikesInChunks(
+	format: SupportedMimeType.KML,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters
+): Promise<StrikeCollectionAndTime<KML>[]>;
+async function fetchAllFinalisedStrikesInChunks(
+	format: SupportedMimeType.CSV,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters
+): Promise<StrikeCollectionAndTime<CSV>[]>;
+async function fetchAllFinalisedStrikesInChunks(
+	format: SupportedMimeType.GeoJson,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters
+): Promise<StrikeCollectionAndTime<LightningFeatureCollectionV3>[]>;
+async function fetchAllFinalisedStrikesInChunks(
+	format: SupportedMimeType.GeoJsonV3,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters
+): Promise<StrikeCollectionAndTime<LightningFeatureCollectionV3>[]>;
+async function fetchAllFinalisedStrikesInChunks(
+	format: SupportedMimeType.GeoJsonV2,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters
+): Promise<StrikeCollectionAndTime<LightningFeatureCollectionV2>[]>;
+async function fetchAllFinalisedStrikesInChunks(
+	format: SupportedMimeType.Blitzen,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters
+): Promise<StrikeCollectionAndTime<BlitzenCollectionV3>[]>;
+async function fetchAllFinalisedStrikesInChunks(
+	format: SupportedMimeType.BlitzenV3,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters
+): Promise<StrikeCollectionAndTime<BlitzenCollectionV3>[]>;
+async function fetchAllFinalisedStrikesInChunks(
+	format: SupportedMimeType.BlitzenV2,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters
+): Promise<StrikeCollectionAndTime<BlitzenCollectionV2>[]>;
+async function fetchAllFinalisedStrikesInChunks(
+	format: SupportedMimeType.BlitzenV1,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters
+): Promise<StrikeCollectionAndTime<BlitzenCollectionV1>[]>;
+async function fetchAllFinalisedStrikesInChunks<T extends StrikeCollectionType>(
+	format: SupportedMimeType,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters
+): Promise<StrikeCollectionAndTime<T>[]>;
 async function fetchAllFinalisedStrikesInChunks(
 	format: SupportedMimeType,
 	chunkDuration: TimeDuration,
@@ -257,29 +397,71 @@ function pollForNewStrikesInArea<T extends StrikeCollectionType>(
  * When the specified periodOfStrikes is finalised, fetches the data and returns it.
  *
  */
-// function fetchStrikesWhenFinalised(
-// 	format: SupportedMimeType.KML,
-// 	periodOfStrikes: TimeDuration,
-// 	query: OpenEndedStrikeQueryParameters,
-// 	callback: (strikeCollection: StrikeCollectionAndTime<KML>) => void
-// ): void;
-// function fetchStrikesWhenFinalised(
-// 	format: SupportedMimeType.GeoJsonV3,
-// 	chunkDuration: TimeDuration,
-// 	query: OpenEndedStrikeQueryParameters,
-// 	callback: (strikeCollection: StrikeCollectionAndTime<LightningFeatureCollectionV3>) => void
-// ): void;
-// function fetchStrikesWhenFinalised(
-// 	format: SupportedMimeType,
-// 	chunkDuration: TimeDuration,
-// 	query: OpenEndedStrikeQueryParameters,
-// 	callback: (strikeCollection: StrikeCollectionAndTime<StrikeCollectionType>) => void
-// ): void;
+function fetchStrikesWhenFinalised(
+	format: SupportedMimeType.KML,
+	periodOfStrikes: TimeDuration,
+	query: OpenEndedStrikeQueryParameters,
+	callback: (strikeCollection: StrikeCollectionAndTime<KML>) => void
+): void;
+function fetchStrikesWhenFinalised(
+	format: SupportedMimeType.GeoJson,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters,
+	callback: (strikeCollection: StrikeCollectionAndTime<LightningFeatureCollectionV3>) => void
+): void;
+function fetchStrikesWhenFinalised(
+	format: SupportedMimeType.GeoJsonV3,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters,
+	callback: (strikeCollection: StrikeCollectionAndTime<LightningFeatureCollectionV3>) => void
+): void;
+function fetchStrikesWhenFinalised(
+	format: SupportedMimeType.GeoJsonV2,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters,
+	callback: (strikeCollection: StrikeCollectionAndTime<LightningFeatureCollectionV3>) => void
+): void;
+function fetchStrikesWhenFinalised(
+	format: SupportedMimeType.Blitzen,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters,
+	callback: (strikeCollection: StrikeCollectionAndTime<BlitzenCollectionV3>) => void
+): void;
+function fetchStrikesWhenFinalised(
+	format: SupportedMimeType.BlitzenV3,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters,
+	callback: (strikeCollection: StrikeCollectionAndTime<BlitzenCollectionV3>) => void
+): void;
+function fetchStrikesWhenFinalised(
+	format: SupportedMimeType.BlitzenV2,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters,
+	callback: (strikeCollection: StrikeCollectionAndTime<BlitzenCollectionV2>) => void
+): void;
+function fetchStrikesWhenFinalised(
+	format: SupportedMimeType.BlitzenV1,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters,
+	callback: (strikeCollection: StrikeCollectionAndTime<BlitzenCollectionV1>) => void
+): void;
+function fetchStrikesWhenFinalised(
+	format: SupportedMimeType.CSV,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters,
+	callback: (strikeCollection: StrikeCollectionAndTime<CSV>) => void
+): void;
+function fetchStrikesWhenFinalised<T extends StrikeCollectionType>(
+	format: SupportedMimeType,
+	chunkDuration: TimeDuration,
+	query: OpenEndedStrikeQueryParameters,
+	callback: (strikeCollection: StrikeCollectionAndTime<T>) => void
+): void;
 function fetchStrikesWhenFinalised<T extends StrikeCollectionType>(
 	format: SupportedMimeType,
 	periodOfStrikes: TimeDuration,
 	query: OpenEndedStrikeQueryParameters,
-	callback: (strikeCollection: StrikeCollectionAndTime<StrikeCollectionType>) => void
+	callback: (strikeCollection: StrikeCollectionAndTime<T>) => void
 ): void {
 	const finalisedHistoryTimeDuration = Duration.fromISO(FINALISED_HISTORY_TIME);
 	const now = DateTime.utc();
@@ -296,7 +478,7 @@ function fetchStrikesWhenFinalised<T extends StrikeCollectionType>(
 	let end = nextChunkEndTime;
 	const timeAfterAChunkFetchUntilNextChunkValid = chunkDuration.plus(finalisedHistoryTimeDuration);
 	const fetchStrikesForChunk = async (start: DateTime, end: DateTime) => {
-		const strikeCollection = await fetchAllStrikesOverAreaAndTime(format, {
+		const strikeCollection = await fetchAllStrikesOverAreaAndTime<T>(format, {
 			...query,
 			time: {
 				start,
@@ -313,61 +495,6 @@ function fetchStrikesWhenFinalised<T extends StrikeCollectionType>(
 		});
 	};
 	setTimeout(async () => await fetchStrikesForChunk(start, end), timeUntilNextFetch.as('milliseconds'));
-}
-
-/**
- * Fetches historic strikes in chunks, and returns all new ones.
- * - Breaks the time period into the requested chunks
- * - Fetches all strikes in each chunked time period
- * - Returns all new strikes
- */
-function getHistoricStrikesAndPollForNewOnes<T extends StrikeCollectionType>(
-	format: SupportedMimeType,
-	query: ClosedIntervalStrikeQueryParameters
-): Promise<StrikeCollection<T>> {
-	throw new Error('Not yet implemented');
-}
-
-function getHistoricStrikesAndListenForNewOnes<T extends StrikeCollectionType>(
-	format: SupportedMimeType,
-	query: ClosedIntervalStrikeQueryParameters
-): Promise<StrikeCollection<T>> {
-	throw new Error('Not yet implemented');
-}
-/**
- * Fetches historic strikes in chunks, and each time a chunk is finalized, returns it. Guarentees strikes will be in order.
- * - Breaks the time period into the requested chunks
- * - Fetches all strikes in each chunked time period
- * - When a new chunk is older than ten minutes, fetches it and returns it
- */
-async function getStrikesAndReturnBatches(
-	format: SupportedMimeType,
-	chunkDuration: TimeDuration,
-	query: OpenEndedStrikeQueryParameters,
-	callback: (strikeCollection: StrikeCollectionAndTime<StrikeCollectionType>) => void
-): Promise<StrikeCollectionAndTime<StrikeCollectionType>[]> {
-	const now = DateTime.utc();
-	// 1 hour ago
-	// :10
-	// 15 minute chunks
-	// 1 - :45
-	// :45 - :30
-	// :30 - :15
-	// :05 => :10, fetch
-	throw new Error('Not yet implemented');
-	const latestTimeAChunkCanBeFinalised = now.minus(Duration.fromISO(FINALISED_HISTORY_TIME));
-	const lastChunkTime = now.minus(transformDurationTimeIntoDuration(chunkDuration));
-	return await fetchAllHistoricStrikesOverAreaAndTimeInChunks(format, chunkDuration, {
-		...query,
-		time: {
-			start: query.time.start,
-			end: latestTimeAChunkCanBeFinalised,
-		},
-	});
-	// const transformedDurationTimeIntoDuration(chunkDuration);
-	// const chunks = now - fromTime / chunk
-	// fetchAllHistoricStrikesOverAreaAndTime();
-	//
 }
 
 export {

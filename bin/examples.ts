@@ -10,9 +10,10 @@ import {
 } from '../src';
 import { DateTime } from 'luxon';
 import { promisify } from 'util';
-import { readdir } from 'fs';
+import { readdir, mkdir } from 'fs';
 
 const readdirPromise = promisify(readdir);
+const mkdirPromise = promisify(mkdir);
 
 const turnIsoDateIntoUrlPath = (isoDate: string) => isoDate.replace(/:|\./g, '_');
 export interface ExampleArguments {
@@ -79,14 +80,24 @@ const fetchLargePeriodOfData = async ({ folderToDownloadStrikesTo, credentials }
  * persistStrikesToFile will overwrite any existing files.
  */
 const fetchAllFinishedData = async ({ folderToDownloadStrikesTo, credentials }: ExampleArguments) => {
+	//Ensure the folder exists before reading from it
+	await mkdirPromise(folderToDownloadStrikesTo, { recursive: true });
 	const files = await readdirPromise(folderToDownloadStrikesTo);
 	const FILE_ISO_STRING_FORMAT = 'yyyy-MM-ddTHH_mm_ss_SSSZ';
+
+	/**
+	 * Subtracts an hour from the current time, the rounds it to the nearest hour.
+	 */
+	const getAnHourAgoRoundedToTheHour = () => {
+		const millisecondsInHour = 60 * 60 * 1000;
+		return new Date(Math.round((Date.now() - millisecondsInHour) / millisecondsInHour) * millisecondsInHour);
+	};
+
 	/**
 	 *	For all the previously fetched files:
 	 *	- Extract the finished time out of the filename and parse it into a sortable date
 	 * Sort the array of dates, so that the last item is the latest date
 	 */
-
 	const fetchedDates = files
 		.map((fileName) => {
 			const [name] = fileName.split('.');
@@ -95,7 +106,7 @@ const fetchAllFinishedData = async ({ folderToDownloadStrikesTo, credentials }: 
 		})
 		.sort();
 	// The latest date, or an hour ago.
-	const latestToTime = fetchedDates.pop() || new Date(Date.now() - 60 * 60 * 1000);
+	const latestToTime = fetchedDates.pop() || getAnHourAgoRoundedToTheHour();
 	const strikeCollections = await fetchAllFinalisedStrikesInChunks(SupportedMimeType.KML, 'PT15M', {
 		apiVersion: SupportedVersion.Four,
 		bbox: [-180, -90, 180, 90],
