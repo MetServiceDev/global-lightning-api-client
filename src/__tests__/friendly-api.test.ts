@@ -68,6 +68,69 @@ describe('When fetching all strikes', () => {
 	});
 });
 
+describe('When fetching all chunks in a query', () => {
+	it('should only fetch finalised chunks', async () => {
+		expect(
+			async () =>
+				await fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+					SupportedMimeType.CSV,
+					'PT15M',
+					{
+						...basicQuery,
+						time: {
+							start: '2020-02-01T00:00:00.000Z',
+							end: new Date(Date.now()),
+						},
+					},
+					10
+				)
+		).toThrowErrorMatchingInlineSnapshot(
+			`This should not be used for periods newer than PT10M ago. It does not deal with the complexities of out of order strikes.`
+		);
+	});
+	it('should throw an error if more than 10 queries at once are requested', () => {
+		expect(
+			async () =>
+				await fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+					SupportedMimeType.CSV,
+					'PT15M',
+					{
+						...basicQuery,
+						time: {
+							start: '2020-02-01T00:00:00.000Z',
+							end: new Date(Date.now()),
+						},
+					},
+					10
+				)
+		).toThrowErrorMatchingInlineSnapshot(`You cannot make more than 10 queries at once`);
+	});
+	it('should only make at most 10 queries at once', async () => {
+		(fetchAndFormatStrikesAndFormatRetryingOnFail as jest.Mock).mockImplementation(
+			(): Promise<ApiResponse<StrikeCollectionType>> => {
+				return Promise.resolve({
+					strikeCollection: new CSVStrikeCollection({
+						text: () => Promise.resolve(``),
+					} as Response),
+					strikesRemaining: false,
+				});
+			}
+		);
+		await fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+			SupportedMimeType.CSV,
+			'PT15M',
+			{
+				...basicQuery,
+				time: {
+					start: '2020-02-01T00:00:00.000Z',
+					end: '2020-02-01T00:15:00.000Z',
+				},
+			},
+			10
+		);
+	});
+});
+
 describe('When fetching all finalised chunks', () => {
 	beforeEach(() => {
 		jest.resetAllMocks();

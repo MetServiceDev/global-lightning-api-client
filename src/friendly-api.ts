@@ -21,6 +21,7 @@ const writeFilePromise = promisify(writeFile);
  */
 
 const FINALISED_HISTORY_TIME = 'PT10M';
+const MAXIMUM_QUERIES_AT_ONCE = 20;
 
 type DateTimeValue = Date | DateTime | string;
 interface TimeInterval {
@@ -60,17 +61,17 @@ interface StrikeCollectionAndTime<T extends StrikeCollectionType> {
 const transformQueryTimeIntoInterval = (time: TimeInterval): Interval => {
 	let { start, end } = time;
 	if (typeof start === 'string') {
-		start = DateTime.fromISO(start);
+		start = transformDateTimeValueIntoDateTime(start);
 	}
 	if (typeof end === 'string') {
-		end = DateTime.fromISO(end);
+		end = transformDateTimeValueIntoDateTime(end);
 	}
 	return Interval.fromDateTimes(start, end);
 };
 
 const transformDateTimeValueIntoDateTime = (time: DateTimeValue): DateTime => {
 	if (typeof time === 'string') {
-		time = DateTime.fromISO(time);
+		time = DateTime.fromISO(time, { zone: 'utc' });
 	}
 	if (time instanceof Date) {
 		time = DateTime.fromJSDate(time);
@@ -137,22 +138,29 @@ async function fetchAllStrikesOverAreaAndTime(
  *
  * Useful for periodically fetching data, or getting data over a specific historic period.
  *
+ * NOTE: This fetches all of the data and then returns it, which means all the data needs to be held in memory.
+ * If you don't have a lot of memory, you will need to do smaller queries.
+ *
+ * If this is an issue for you, let us know and we will look at doing a callback version.
  *
  */
 async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
 	format: SupportedMimeType.KML,
 	chunkDuration: TimeDuration,
-	query: ClosedIntervalStrikeQueryParameters
+	query: ClosedIntervalStrikeQueryParameters,
+	maximumQueries?: number
 ): Promise<StrikeCollectionAndTime<KML>[]>;
 async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
 	format: SupportedMimeType,
 	chunkDuration: TimeDuration,
-	query: ClosedIntervalStrikeQueryParameters
+	query: ClosedIntervalStrikeQueryParameters,
+	maximumQueries?: number
 ): Promise<StrikeCollectionAndTime<StrikeCollectionType>[]>;
 async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
 	format: SupportedMimeType,
 	chunkDuration: TimeDuration,
-	query: ClosedIntervalStrikeQueryParameters
+	query: ClosedIntervalStrikeQueryParameters,
+	maximumQueries: number = 10
 ): Promise<StrikeCollectionAndTime<StrikeCollectionType>[]> {
 	const queryTime = transformQueryTimeIntoInterval(query.time);
 	if (queryTime.end >= DateTime.utc().minus(Duration.fromISO(FINALISED_HISTORY_TIME))) {
@@ -160,20 +168,29 @@ async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
 			`This should not be used for periods newer than ${FINALISED_HISTORY_TIME} ago. It does not deal with the complexities of out of order strikes.`
 		);
 	}
+	if (maximumQueries > MAXIMUM_QUERIES_AT_ONCE) {
+		throw new Error(`You cannot make more than ${MAXIMUM_QUERIES_AT_ONCE} queries at once`);
+	}
 	const periodChunks = queryTime.splitBy(transformDurationTimeIntoDuration(chunkDuration));
-	const chunkedStrikeCollections = await Promise.all(
-		periodChunks.map(async (period) => {
-			return {
-				strikeCollection: await fetchAllStrikesOverAreaAndTime(format, {
-					...query,
-					time: period,
-				}),
-				start: period.start.toJSDate(),
-				end: period.end.toJSDate(),
-			};
-		})
-	);
-	return chunkedStrikeCollections;
+	let processedQueries: StrikeCollectionAndTime<StrikeCollectionType>[] = [];
+	for (let index = 0; index < periodChunks.length; index += maximumQueries) {
+		const periodChunksToProcess = periodChunks.slice(index, index + maximumQueries);
+		console.log(`Getting data from ${periodChunksToProcess[0].start.toISO()} to ${periodChunksToProcess.slice(-1)[0].end.toISO()}`);
+		const chunkedStrikeCollections = await Promise.all(
+			periodChunksToProcess.map(async (period) => {
+				return {
+					strikeCollection: await fetchAllStrikesOverAreaAndTime(format, {
+						...query,
+						time: period,
+					}),
+					start: period.start.toJSDate(),
+					end: period.end.toJSDate(),
+				};
+			})
+		);
+		processedQueries = processedQueries.concat(chunkedStrikeCollections);
+	}
+	return processedQueries;
 }
 
 async function fetchAllFinalisedStrikesInChunks(
@@ -203,7 +220,7 @@ async function fetchAllFinalisedStrikesInChunks(
  */
 const persistStrikesToFile = async (collectionToPersist: StrikeCollection<StrikeCollectionType>, directoryToSaveIn: string, fileName: string) => {
 	try {
-		const path = await mkdirPromise(directoryToSaveIn, { recursive: true });
+		await mkdirPromise(directoryToSaveIn, { recursive: true });
 		const collectionAsString = await collectionToPersist.toString();
 		await writeFilePromise(`${directoryToSaveIn}/${fileName}`, collectionAsString);
 	} catch (error) {

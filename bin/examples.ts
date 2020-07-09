@@ -14,7 +14,7 @@ import { readdir } from 'fs';
 
 const readdirPromise = promisify(readdir);
 
-const turnIsoDateIntoUrlPath = (isoDate: string) => isoDate.replace(/:\./g, '_');
+const turnIsoDateIntoUrlPath = (isoDate: string) => isoDate.replace(/:|\./g, '_');
 export interface ExampleArguments {
 	folderToDownloadStrikesTo: string;
 	credentials: {
@@ -49,7 +49,7 @@ const fetchHistoricData = async ({ folderToDownloadStrikesTo, credentials }: Exa
  * This will make 960 parallel requests and ensure each chunk has its own data.
  */
 const fetchLargePeriodOfData = async ({ folderToDownloadStrikesTo, credentials }: ExampleArguments) => {
-	const strikeCollections = await fetchAllHistoricStrikesOverAreaAndTimeInChunks(SupportedMimeType.KML, 'PT15M', {
+	const apiResponses = await fetchAllHistoricStrikesOverAreaAndTimeInChunks(SupportedMimeType.KML, 'PT15M', {
 		apiVersion: SupportedVersion.Four,
 		bbox: [-180, -90, 180, 90],
 		credentials,
@@ -60,7 +60,7 @@ const fetchLargePeriodOfData = async ({ folderToDownloadStrikesTo, credentials }
 		},
 	});
 	const fileNames = await Promise.all(
-		strikeCollections.map(async ({ strikeCollection, start, end }) => {
+		apiResponses.map(async ({ strikeCollection, start, end }) => {
 			const fileName = `${turnIsoDateIntoUrlPath(start.toISOString())}--${turnIsoDateIntoUrlPath(end.toISOString())}.kml`;
 			await persistStrikesToFile(strikeCollection, folderToDownloadStrikesTo, fileName);
 			// Do something with the individual file

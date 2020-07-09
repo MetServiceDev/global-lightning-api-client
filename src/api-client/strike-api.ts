@@ -114,6 +114,11 @@ async function fetchAndFormatStrikes(
 			Authorization: `${getAuthorizationPrefix(credentials.type)} ${credentials.token}`,
 		},
 	});
+	if (!response.ok) {
+		const bodyAsText = await response.text();
+		console.error(`The API returned an error`, response.status, response.statusText, bodyAsText);
+		throw new Error(`The API return ${response.status} - "${response.statusText}" - "${bodyAsText}"`);
+	}
 	let strikesRemaining = false;
 	const linkHeader = response.headers.get('link');
 	if (linkHeader !== null) {
