@@ -105,9 +105,10 @@ const transformDurationTimeIntoDuration = (duration: TimeDuration): Duration => 
 /**
  * Fetches strikes from the lightning API over the given time and area in a resilient fashion until all strikes that the API knows about have been received.
  *
- * WARNING: This does not deal well with out of order strikes. If a strike is not in the API as of request time (due to network propogation or other delays), then
- * this will not return it. The merging of strike collections assumes that each collection has an entirely unique set of strikes. Therefore, if you're using this for
- * data within the last ten minutes where this is not necessarily the case, you will need to keep requesting that data until it is finalised and removing duplicate strikes.
+ * WARNING: This does not deal well with out of order/delayed strikes. If a strike is not in the API as of request time (due to network propogation or other delays), then
+ * this will not return it. The merging of strike collections assumes that each collection has an entirely unique set of strikes which may not be the case in recent queries.
+ * Therefore, if you're using this for data within the last ten minutes where this is not necessarily the case, you will need to keep requesting that data until it is finalised
+ * and removing duplicate strikes.
  *
  * This should only be used for small queries and larger queries should be split up into multiple requests to increase the parallelism.
  *
@@ -182,9 +183,11 @@ async function fetchAllStrikesOverAreaAndTime(
 }
 
 /**
- * Takes a time period, breaks it into chunks and then fetches all the periods. Guarentees strikes will be in order.
+ * Takes a time period, breaks it into smaller durations up by the given chunk period and then fetches all the periods.
+ * Guarentees strikes in each duration will be in order, and it will not fetch strikes that are not finalised.
+ * If the time period is not nicely divided into smaller durations, the last duration will be of an unequal size.
  *
- * Useful for periodically fetching data, or getting data over a specific historic period.
+ * Useful for getting data over a specific historic period, or periodically fetching a closed period.
  *
  * NOTE: This fetches all of the data and then returns it, which means all the data needs to be held in memory.
  * If you don't have a lot of memory, you will need to do smaller queries.
@@ -192,61 +195,61 @@ async function fetchAllStrikesOverAreaAndTime(
  * If this is an issue for you, let us know and we will look at doing a callback version.
  *
  */
-async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+async function fetchPeriodOfHistoricStrikesInChunks(
 	format: SupportedMimeType.KML,
 	chunkDuration: TimeDuration,
 	query: ClosedIntervalStrikeQueryParameters,
 	maximumQueries?: number
 ): Promise<StrikeCollectionAndTime<KML>[]>;
-async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+async function fetchPeriodOfHistoricStrikesInChunks(
 	format: SupportedMimeType.GeoJson,
 	chunkDuration: TimeDuration,
 	query: ClosedIntervalStrikeQueryParameters,
 	maximumQueries?: number
 ): Promise<StrikeCollectionAndTime<LightningFeatureCollectionV3>[]>;
-async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+async function fetchPeriodOfHistoricStrikesInChunks(
 	format: SupportedMimeType.GeoJsonV3,
 	chunkDuration: TimeDuration,
 	query: ClosedIntervalStrikeQueryParameters,
 	maximumQueries?: number
 ): Promise<StrikeCollectionAndTime<LightningFeatureCollectionV3>[]>;
-async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+async function fetchPeriodOfHistoricStrikesInChunks(
 	format: SupportedMimeType.GeoJsonV2,
 	chunkDuration: TimeDuration,
 	query: ClosedIntervalStrikeQueryParameters,
 	maximumQueries?: number
 ): Promise<StrikeCollectionAndTime<LightningFeatureCollectionV2>[]>;
-async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+async function fetchPeriodOfHistoricStrikesInChunks(
 	format: SupportedMimeType.Blitzen,
 	chunkDuration: TimeDuration,
 	query: ClosedIntervalStrikeQueryParameters,
 	maximumQueries?: number
 ): Promise<StrikeCollectionAndTime<BlitzenCollectionV3>[]>;
-async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+async function fetchPeriodOfHistoricStrikesInChunks(
 	format: SupportedMimeType.BlitzenV3,
 	chunkDuration: TimeDuration,
 	query: ClosedIntervalStrikeQueryParameters,
 	maximumQueries?: number
 ): Promise<StrikeCollectionAndTime<BlitzenCollectionV3>[]>;
-async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+async function fetchPeriodOfHistoricStrikesInChunks(
 	format: SupportedMimeType.BlitzenV2,
 	chunkDuration: TimeDuration,
 	query: ClosedIntervalStrikeQueryParameters,
 	maximumQueries?: number
 ): Promise<StrikeCollectionAndTime<BlitzenCollectionV2>[]>;
-async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+async function fetchPeriodOfHistoricStrikesInChunks(
 	format: SupportedMimeType.BlitzenV1,
 	chunkDuration: TimeDuration,
 	query: ClosedIntervalStrikeQueryParameters,
 	maximumQueries?: number
 ): Promise<StrikeCollectionAndTime<BlitzenCollectionV1>[]>;
-async function fetchAllHistoricStrikesOverAreaAndTimeInChunks<T extends StrikeCollectionType>(
+async function fetchPeriodOfHistoricStrikesInChunks<T extends StrikeCollectionType>(
 	format: SupportedMimeType,
 	chunkDuration: TimeDuration,
 	query: ClosedIntervalStrikeQueryParameters,
 	maximumQueries?: number
 ): Promise<StrikeCollectionAndTime<T>[]>;
-async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
+async function fetchPeriodOfHistoricStrikesInChunks(
 	format: SupportedMimeType,
 	chunkDuration: TimeDuration,
 	query: ClosedIntervalStrikeQueryParameters,
@@ -282,58 +285,63 @@ async function fetchAllHistoricStrikesOverAreaAndTimeInChunks(
 	}
 	return processedQueries;
 }
-
-async function fetchAllFinalisedStrikesInChunks(
+/**
+ * Works out the latest chunk that has been finalised and fetches all chunks from the start time to that chunk.
+ * Guarentees strikes in each duration will be in order, and it will not fetch strikes that are not finalised.
+ *
+ * Useful for batch jobs where you periodically fetch all data.
+ */
+async function fetchLatestHistoricStrikesInChunks(
 	format: SupportedMimeType.KML,
 	chunkDuration: TimeDuration,
 	query: OpenEndedStrikeQueryParameters
 ): Promise<StrikeCollectionAndTime<KML>[]>;
-async function fetchAllFinalisedStrikesInChunks(
+async function fetchLatestHistoricStrikesInChunks(
 	format: SupportedMimeType.CSV,
 	chunkDuration: TimeDuration,
 	query: OpenEndedStrikeQueryParameters
 ): Promise<StrikeCollectionAndTime<CSV>[]>;
-async function fetchAllFinalisedStrikesInChunks(
+async function fetchLatestHistoricStrikesInChunks(
 	format: SupportedMimeType.GeoJson,
 	chunkDuration: TimeDuration,
 	query: OpenEndedStrikeQueryParameters
 ): Promise<StrikeCollectionAndTime<LightningFeatureCollectionV3>[]>;
-async function fetchAllFinalisedStrikesInChunks(
+async function fetchLatestHistoricStrikesInChunks(
 	format: SupportedMimeType.GeoJsonV3,
 	chunkDuration: TimeDuration,
 	query: OpenEndedStrikeQueryParameters
 ): Promise<StrikeCollectionAndTime<LightningFeatureCollectionV3>[]>;
-async function fetchAllFinalisedStrikesInChunks(
+async function fetchLatestHistoricStrikesInChunks(
 	format: SupportedMimeType.GeoJsonV2,
 	chunkDuration: TimeDuration,
 	query: OpenEndedStrikeQueryParameters
 ): Promise<StrikeCollectionAndTime<LightningFeatureCollectionV2>[]>;
-async function fetchAllFinalisedStrikesInChunks(
+async function fetchLatestHistoricStrikesInChunks(
 	format: SupportedMimeType.Blitzen,
 	chunkDuration: TimeDuration,
 	query: OpenEndedStrikeQueryParameters
 ): Promise<StrikeCollectionAndTime<BlitzenCollectionV3>[]>;
-async function fetchAllFinalisedStrikesInChunks(
+async function fetchLatestHistoricStrikesInChunks(
 	format: SupportedMimeType.BlitzenV3,
 	chunkDuration: TimeDuration,
 	query: OpenEndedStrikeQueryParameters
 ): Promise<StrikeCollectionAndTime<BlitzenCollectionV3>[]>;
-async function fetchAllFinalisedStrikesInChunks(
+async function fetchLatestHistoricStrikesInChunks(
 	format: SupportedMimeType.BlitzenV2,
 	chunkDuration: TimeDuration,
 	query: OpenEndedStrikeQueryParameters
 ): Promise<StrikeCollectionAndTime<BlitzenCollectionV2>[]>;
-async function fetchAllFinalisedStrikesInChunks(
+async function fetchLatestHistoricStrikesInChunks(
 	format: SupportedMimeType.BlitzenV1,
 	chunkDuration: TimeDuration,
 	query: OpenEndedStrikeQueryParameters
 ): Promise<StrikeCollectionAndTime<BlitzenCollectionV1>[]>;
-async function fetchAllFinalisedStrikesInChunks<T extends StrikeCollectionType>(
+async function fetchLatestHistoricStrikesInChunks<T extends StrikeCollectionType>(
 	format: SupportedMimeType,
 	chunkDuration: TimeDuration,
 	query: OpenEndedStrikeQueryParameters
 ): Promise<StrikeCollectionAndTime<T>[]>;
-async function fetchAllFinalisedStrikesInChunks(
+async function fetchLatestHistoricStrikesInChunks(
 	format: SupportedMimeType,
 	chunkDuration: TimeDuration,
 	query: OpenEndedStrikeQueryParameters
@@ -345,7 +353,7 @@ async function fetchAllFinalisedStrikesInChunks(
 	while (lastValidChunkEndTime < latestTimeAChunkCanBeFinalised) {
 		lastValidChunkEndTime = lastValidChunkEndTime.plus(chunk);
 	}
-	return await fetchAllHistoricStrikesOverAreaAndTimeInChunks(format, chunk, {
+	return await fetchPeriodOfHistoricStrikesInChunks(format, chunk, {
 		...query,
 		time: {
 			start: query.time.start,
@@ -394,8 +402,9 @@ function pollForNewStrikesInArea<T extends StrikeCollectionType>(
 	throw new Error('Not yet implemented');
 }
 /**
- * When the specified periodOfStrikes is finalised, fetches the data and returns it.
+ * When the specified periodOfStrikes is finalised, fetches the data and calls the callback.
  *
+ * Best used for long-running jobs.
  */
 function fetchStrikesWhenFinalised(
 	format: SupportedMimeType.KML,
@@ -499,8 +508,8 @@ function fetchStrikesWhenFinalised<T extends StrikeCollectionType>(
 
 export {
 	fetchAllStrikesOverAreaAndTime,
-	fetchAllHistoricStrikesOverAreaAndTimeInChunks,
-	fetchAllFinalisedStrikesInChunks,
+	fetchPeriodOfHistoricStrikesInChunks,
+	fetchLatestHistoricStrikesInChunks,
 	fetchStrikesWhenFinalised,
 	persistStrikesToFile,
 };

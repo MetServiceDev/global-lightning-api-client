@@ -1,8 +1,8 @@
 import {
 	persistStrikesToFile,
 	fetchAllStrikesOverAreaAndTime,
-	fetchAllHistoricStrikesOverAreaAndTimeInChunks,
-	fetchAllFinalisedStrikesInChunks,
+	fetchLatestHistoricStrikesInChunks,
+	fetchPeriodOfHistoricStrikesInChunks,
 	fetchStrikesWhenFinalised,
 	SupportedMimeType,
 	SupportedVersion,
@@ -15,7 +15,7 @@ import { readdir, mkdir } from 'fs';
 const readdirPromise = promisify(readdir);
 const mkdirPromise = promisify(mkdir);
 
-const turnIsoDateIntoUrlPath = (isoDate: string) => isoDate.replace(/:|\./g, '_');
+const turnIsoDateIntoUrlPath = (isoDate: string) => isoDate.replace(/:|\./g, '-');
 export interface ExampleArguments {
 	folderToDownloadStrikesTo: string;
 	credentials: {
@@ -47,10 +47,10 @@ const fetchHistoricData = async ({ folderToDownloadStrikesTo, credentials }: Exa
 };
 /**
  * Fetch ten days of data in 15 minute chunks.
- * This will make 960 parallel requests and ensure each chunk has its own data.
+ * This will break the query into 960 chunks, and fetch 20 chunks at a time ensure each chunk is finished.
  */
 const fetchLargePeriodOfData = async ({ folderToDownloadStrikesTo, credentials }: ExampleArguments) => {
-	const apiResponses = await fetchAllHistoricStrikesOverAreaAndTimeInChunks(SupportedMimeType.KML, 'PT15M', {
+	const apiResponses = await fetchPeriodOfHistoricStrikesInChunks(SupportedMimeType.KML, 'PT15M', {
 		apiVersion: SupportedVersion.Four,
 		bbox: [-180, -90, 180, 90],
 		credentials,
@@ -83,7 +83,7 @@ const fetchAllFinishedData = async ({ folderToDownloadStrikesTo, credentials }: 
 	//Ensure the folder exists before reading from it
 	await mkdirPromise(folderToDownloadStrikesTo, { recursive: true });
 	const files = await readdirPromise(folderToDownloadStrikesTo);
-	const FILE_ISO_STRING_FORMAT = 'yyyy-MM-ddTHH_mm_ss_SSSZ';
+	const FILE_ISO_STRING_FORMAT = 'yyyy-MM-ddTHH-mm-ss-SSSZ';
 
 	/**
 	 * Subtracts an hour from the current time, the rounds it to the nearest hour.
@@ -107,7 +107,7 @@ const fetchAllFinishedData = async ({ folderToDownloadStrikesTo, credentials }: 
 		.sort();
 	// The latest date, or an hour ago.
 	const latestToTime = fetchedDates.pop() || getAnHourAgoRoundedToTheHour();
-	const strikeCollections = await fetchAllFinalisedStrikesInChunks(SupportedMimeType.KML, 'PT15M', {
+	const strikeCollections = await fetchLatestHistoricStrikesInChunks(SupportedMimeType.KML, 'PT15M', {
 		apiVersion: SupportedVersion.Four,
 		bbox: [-180, -90, 180, 90],
 		credentials,
