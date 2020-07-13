@@ -9,7 +9,6 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ModelObject } from './modelObject';
 
 /**
  * a json object containing details about the sensors used to record the strike
@@ -42,5 +41,5 @@ export interface BlitzenVersion3SensorDetails {
 	/**
 	 * Peak-to-zero time of the waveform in microseconds
 	 */
-	peakTime?: ModelObject;
+	peakTime?: number;
 }

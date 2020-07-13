@@ -42,3 +42,5 @@ export namespace BlitzenVersion1 {
 		GROUND: 'GROUND' as DirectionEnum,
 	};
 }
+
+export type BlitzenCollectionV1 = BlitzenVersion1[];

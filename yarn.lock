@@ -584,16 +584,18 @@ __metadata:
   resolution: "@metservice/global-lightning-client@workspace:."
   dependencies:
     "@metservice/prettier": 1.1.0
-    "@turf/helpers": 6.1.4
     "@types/isomorphic-fetch": 0.0.35
     "@types/jest": 25.2.3
+    "@types/luxon": 1.24.1
     "@types/node": 14.0.5
+    "@types/parse-link-header": 1.0.0
     "@types/xml2js": 0.4.5
     husky: ">=4"
     isomorphic-fetch: 2.2.1
     jest: 25.5.4
     lint-staged: ">=10"
     luxon: 1.24.1
+    parse-link-header: 1.0.1
     prettier: 2.0.4
     source-map-support: 0.5.16
     ts-jest: 25.5.1
@@ -616,13 +618,6 @@ __metadata:
   dependencies:
     type-detect: 4.0.8
   checksum: 57e07458d899a3f09bd46e79445b4210837c37cbd9c9e5be9dd7746be0a02a0f9897f8dcde5e89836b1af7e2fc6cb6765626a37066747e8acc863c1b8b6fdccb
-  languageName: node
-  linkType: hard
-
-"@turf/helpers@npm:6.1.4":
-  version: 6.1.4
-  resolution: "@turf/helpers@npm:6.1.4"
-  checksum: c592c5f4baef33070da27648a5e7ebe587fb14c01e9afca34fb403d8e60602e739ee75414dd2f761df59a964ece3c867cf1e0361863c1eda95383f2739946f2e
   languageName: node
   linkType: hard
 
@@ -726,6 +721,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/luxon@npm:1.24.1":
+  version: 1.24.1
+  resolution: "@types/luxon@npm:1.24.1"
+  checksum: e83d7eba2108b81c4e386e75d340b981fcdec674093d50546e8243138278681b71e86ba5d297abd1fd60ca357472ba6b4a5f9734d3b99668543e35fc33455476
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*, @types/node@npm:14.0.5":
   version: 14.0.5
   resolution: "@types/node@npm:14.0.5"
@@ -744,6 +746,13 @@ __metadata:
   version: 4.0.0
   resolution: "@types/parse-json@npm:4.0.0"
   checksum: 4a8f720afac47b474d3f2eece312340e72bc31bc9561cda37b596ce2ed218c0099765d302625bb67d659a8452a1f93d514f4863c11c7ebaf65430428687dc426
+  languageName: node
+  linkType: hard
+
+"@types/parse-link-header@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@types/parse-link-header@npm:1.0.0"
+  checksum: 54cbf7806f44e5808e5590d8dba6be2436473c2ec1fbdfb79368cb7a67d3fd52f0601ea2cd1d38c73c116b3209dfb09045e8359bcd0041e1637dd734f1618762
   languageName: node
   linkType: hard
 
@@ -4026,6 +4035,15 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
+"parse-link-header@npm:1.0.1":
+  version: 1.0.1
+  resolution: "parse-link-header@npm:1.0.1"
+  dependencies:
+    xtend: ~4.0.1
+  checksum: c69a17e05e3995941d52de530891c4ec1c83651d6aad28ad791cc0f197baeeba329baed50945cf1e147b8c62cbde84d048907ebef54d4fe4d25eb139dd018df2
+  languageName: node
+  linkType: hard
+
 "parse5@npm:5.1.0":
   version: 5.1.0
   resolution: "parse5@npm:5.1.0"
@@ -5553,6 +5571,13 @@ typescript@3.9.3:
   version: 2.2.0
   resolution: "xmlchars@npm:2.2.0"
   checksum: 69bbb61e8d939873c8aa7d006d082944de2eb6f12f55e53fdfc670d544e677736b59e498ece303f264bd1dc39b77557eef1c1c9bfb09eb5e1e30ac552420d81e
+  languageName: node
+  linkType: hard
+
+"xtend@npm:~4.0.1":
+  version: 4.0.2
+  resolution: "xtend@npm:4.0.2"
+  checksum: 37ee522a3e9fb9b143a400c30b21dc122aa8c9c9411c6afae1005a4617dc20a21765c114d544e37a6bb60c2733dd8ee0a44ed9e80d884ac78cccd30b5e0ab0da
   languageName: node
   linkType: hard
 
