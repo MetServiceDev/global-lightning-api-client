@@ -1,10 +1,18 @@
 # Global Lightning API client
 
 This client provides a wrapper around MetService/Metraweather's [Lightning API](https://app.swaggerhub.com/apis-docs/ms-platform-devs/lightning-api/4.0.0) to make using the API easier.
+Published to npm under [@metservice/global-lightning-client](https://www.npmjs.com/package/@metservice/global-lightning-client).
 
 - [Global Lightning API client](#global-lightning-api-client)
 - [Network delays and historic/finalised strikes](#network-delays-and-historicfinalised-strikes)
-- [Using this library](#using-this-library) - [Ingest historic data](#ingest-historic-data) - [Periodic upload of finalised data](#periodic-upload-of-finalised-data) - [Long running process to upload finalised data as it becomes ready.](#long-running-process-to-upload-finalised-data-as-it-becomes-ready) - [Non-websocket version of new data as it arrives](#non-websocket-version-of-new-data-as-it-arrives) - [WebSocket feed of data](#websocket-feed-of-data) - [Others](#others) - [Performance issues using languages other than NodeJS](#performance-issues-using-languages-other-than-nodejs)
+- [Using this library](#using-this-library)
+	- [Ingest historic data](#ingest-historic-data)
+	- [Periodic upload of finalised data](#periodic-upload-of-finalised-data)
+	- [Long running process to upload finalised data as it becomes ready.](#long-running-process-to-upload-finalised-data-as-it-becomes-ready)
+	- [Non-websocket version of new data as it arrives](#non-websocket-version-of-new-data-as-it-arrives)
+	- [WebSocket feed of data](#websocket-feed-of-data)
+	- [Others](#others)
+	- [Performance issues using languages other than NodeJS](#performance-issues-using-languages-other-than-nodejs)
 - [Licenses](#licenses)
 
 # Network delays and historic/finalised strikes
