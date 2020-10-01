@@ -11,7 +11,7 @@ import {
 } from './api-client/strike-collections';
 import {
 	SupportedMimeType,
-	CredentialType,
+	CredentialsDetails,
 	SupportedVersion,
 	Bbox,
 	LightningStrikeDirection,
@@ -21,6 +21,7 @@ import {
 import { Duration, DateTime, Interval } from 'luxon';
 import { mkdir, writeFile } from 'fs';
 import { promisify } from 'util';
+import ora from 'ora';
 
 const mkdirPromise = promisify(mkdir);
 const writeFilePromise = promisify(writeFile);
@@ -30,7 +31,8 @@ const writeFilePromise = promisify(writeFile);
  * TODO: Better name for this.
  */
 
-const FINALISED_HISTORY_TIME = 'PT10M';
+const FINALISED_HISTORY_TIME = 'PT5M';
+const MAXIMUM_STRIKES_IN_ONE_QUERY = 10000;
 const MAXIMUM_QUERIES_AT_ONCE = 20;
 
 type DateTimeValue = Date | DateTime | string;
@@ -41,10 +43,7 @@ interface TimeInterval {
 type TimeDuration = Duration | string | number;
 
 export interface OpenEndedStrikeQueryParameters {
-	credentials: {
-		type: CredentialType;
-		token: string;
-	};
+	credentials: CredentialsDetails;
 	apiVersion: SupportedVersion;
 	time: {
 		start: DateTimeValue;
@@ -62,6 +61,15 @@ interface StrikeCollectionAndTime<T extends StrikeCollectionType> {
 	start: Date;
 	end: Date;
 }
+const supportedMimeTypeToExtension = (type: SupportedMimeType) => {
+	if (type === SupportedMimeType.KML) {
+		return 'kml';
+	}
+	if (type === SupportedMimeType.CSV) {
+		return 'csv';
+	}
+	return 'json';
+}
 /**
  * Transforms the user friendly time option into a luxon Interval.
  * NOTE: Interval adheres to the TimeInterval interface, so this can be called with its own output.
@@ -70,10 +78,10 @@ interface StrikeCollectionAndTime<T extends StrikeCollectionType> {
  */
 const transformQueryTimeIntoInterval = (time: TimeInterval): Interval => {
 	let { start, end } = time;
-	if (typeof start === 'string') {
+	if (typeof start === 'string' || start instanceof Date) {
 		start = transformDateTimeValueIntoDateTime(start);
 	}
-	if (typeof end === 'string') {
+	if (typeof end === 'string' || end instanceof Date) {
 		end = transformDateTimeValueIntoDateTime(end);
 	}
 	return Interval.fromDateTimes(start, end);
@@ -268,7 +276,8 @@ async function fetchPeriodOfHistoricStrikesInChunks(
 	let processedQueries: StrikeCollectionAndTime<StrikeCollectionType>[] = [];
 	for (let index = 0; index < periodChunks.length; index += maximumQueries) {
 		const periodChunksToProcess = periodChunks.slice(index, index + maximumQueries);
-		console.log(`Getting data from ${periodChunksToProcess[0].start.toISO()} to ${periodChunksToProcess.slice(-1)[0].end.toISO()}`);
+		let progress = process.env.showProgress && ora().start(`Getting data from ${periodChunksToProcess[0].start.toISO()} to ${periodChunksToProcess.slice(-1)[0].end.toISO()}`);
+		process.env.debug && console.log(`Getting data from ${periodChunksToProcess[0].start.toISO()} to ${periodChunksToProcess.slice(-1)[0].end.toISO()}`);
 		const chunkedStrikeCollections = await Promise.all(
 			periodChunksToProcess.map(async (period) => {
 				return {
@@ -281,6 +290,7 @@ async function fetchPeriodOfHistoricStrikesInChunks(
 				};
 			})
 		);
+		progress && progress.succeed(`Fetched data from ${periodChunksToProcess[0].start.toISO()} to ${periodChunksToProcess.slice(-1)[0].end.toISO()}`);
 		processedQueries = processedQueries.concat(chunkedStrikeCollections);
 	}
 	return processedQueries;
@@ -372,7 +382,7 @@ const persistStrikesToFile = async (collectionToPersist: StrikeCollection<Strike
 		const collectionAsString = await collectionToPersist.toString();
 		await writeFilePromise(`${directoryToSaveIn}/${fileName}`, collectionAsString);
 	} catch (error) {
-		console.error(`Failed to write collection to disk`, error);
+		process.env.debug && console.error(`Failed to write collection to disk`, error);
 		throw error;
 	}
 };
@@ -486,7 +496,9 @@ function fetchStrikesWhenFinalised<T extends StrikeCollectionType>(
 	let start = nextChunkEndTime.minus(chunkDuration);
 	let end = nextChunkEndTime;
 	const timeAfterAChunkFetchUntilNextChunkValid = chunkDuration.plus(finalisedHistoryTimeDuration);
+	let progress = process.env.showProgress && ora().start(`Waiting to fetch the data from ${start.toISO()} to ${end.toISO()} until it is finalised/ready at ${DateTime.utc().plus(timeUntilNextFetch).toISO()}`);
 	const fetchStrikesForChunk = async (start: DateTime, end: DateTime) => {
+		progress && progress.start(`Fetching data from ${start.toISO()} to ${end.toISO()}`);
 		const strikeCollection = await fetchAllStrikesOverAreaAndTime<T>(format, {
 			...query,
 			time: {
@@ -494,8 +506,10 @@ function fetchStrikesWhenFinalised<T extends StrikeCollectionType>(
 				end,
 			},
 		});
+		progress && progress.succeed(`Fetched data from ${start.toISO()} to ${end.toISO()}`);
 		const nextStart = end;
 		const nextEnd = end.plus(chunkDuration);
+		progress = process.env.showProgress && ora().start(`Waiting to fetch the data from ${nextStart.toISO()} to ${nextEnd.toISO()} until it is finalised/ready at ${DateTime.utc().plus(timeUntilNextFetch).toISO()}`);
 		setTimeout(async () => await fetchStrikesForChunk(nextStart, nextEnd), timeAfterAChunkFetchUntilNextChunkValid.as('milliseconds'));
 		callback({
 			strikeCollection,
@@ -512,4 +526,9 @@ export {
 	fetchLatestHistoricStrikesInChunks,
 	fetchStrikesWhenFinalised,
 	persistStrikesToFile,
+	supportedMimeTypeToExtension,
+	FINALISED_HISTORY_TIME,
+	MAXIMUM_STRIKES_IN_ONE_QUERY,
+	MAXIMUM_QUERIES_AT_ONCE,
+	StrikeCollectionAndTime
 };

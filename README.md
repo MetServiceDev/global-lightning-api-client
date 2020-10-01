@@ -23,9 +23,12 @@ We have not built any functionality to deal with this complexity below, instead 
 
 # Using this library
 
-We provide a few ways to use this library depending on your use case. The up-to-date running versions of the code below lives in bin/examples.ts. We have extracted some common utility definitions such as the directory to store things and credentials. These are defined in the `bin/examples.ts` but are unnecessary noise below so have been removed.
+We provide a few ways to use this library depending on your use case. At it's simplest, this library provides an a CLI. If you run `npm install -g @metservice/global-lightning-client`, you can then run `npm metraweather-global-lightning`, which will walk you through configuring and using it. It will ask you to set some defaults, which can be overridden at any time.
 
 ## Ingest historic data
+
+Run `npm metraweather-global-lightning query`, this will default to asking you what you want.
+The following code example can be run like so: `npm metraweather-global-lightning query --format kml --from 2020-06-20T00:00:00.000Z --to 2020-06-30T00:00:00.000Z --limit 10000 --bbox -180,-90 180,-90`
 
 If you want to make a request for 3 hours or more of historic/finalised data, then the following query will do so. (We would suggest doing this for any query larger than 15 minutes).
 

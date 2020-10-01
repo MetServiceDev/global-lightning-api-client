@@ -1,4 +1,5 @@
 import { Interval } from 'luxon';
+import { getJwtFromClientCredentials } from '@metservice/metraweather-client-credentials';
 import 'isomorphic-fetch';
 import {
 	StrikeCollection,
@@ -49,22 +50,40 @@ export enum SupportedVersion {
 export enum CredentialType {
 	jwt = 'jwt',
 	apiKey = 'apiKey',
+	clientCredentials = 'clientCredentials'
 }
+type TokenCredentials = {
+	type: CredentialType.jwt | CredentialType.apiKey,
+	token: string;
+}
+type ClientCredentials = {
+	type: CredentialType.clientCredentials,
+	clientId: string;
+	clientSecret: string;
+};
+export type CredentialsDetails = TokenCredentials | ClientCredentials
 
 const assertUnreachable = (x: never, customErrorMessage: string = `Unreachable code reached, handling for value '${x}' is not defined.`): never => {
 	throw new Error(customErrorMessage);
 };
 
-const getAuthorizationPrefix = (type: CredentialType) => {
-	switch (type) {
+
+const getAuthorizationHeader = async (credentials: CredentialsDetails): Promise<{ [key: string]: string }> => {
+	switch (credentials.type) {
 		case CredentialType.jwt: {
-			return 'Bearer';
+			return { Authorization: `Bearer ${credentials.token}` };
 		}
 		case CredentialType.apiKey: {
-			return 'ApiKey';
+			return { Authorization: `ApiKey ${credentials.token}` };
+		}
+		case CredentialType.clientCredentials: {
+			return getAuthorizationHeader({
+				type: CredentialType.jwt,
+				token: await getJwtFromClientCredentials(credentials)
+			});
 		}
 		default: {
-			return assertUnreachable(type, `Credential Type '${type}' is not understood/supported.`);
+			return assertUnreachable(credentials, `Credentials '${JSON.stringify(credentials)}' is not understood/supported.`);
 		}
 	}
 };
@@ -72,10 +91,7 @@ const getAuthorizationPrefix = (type: CredentialType) => {
 export type Bbox = [number, number, number, number];
 
 export interface StrikeQueryParameters {
-	credentials: {
-		type: CredentialType;
-		token: string;
-	};
+	credentials: CredentialsDetails;
 	apiVersion: SupportedVersion;
 	time: Interval;
 	bbox: Bbox;
@@ -107,11 +123,12 @@ async function fetchAndFormatStrikes(
 	const directionsString = directions ? `&direction=${directions.join(',')}` : '';
 	const timeString = `${time.start.setZone('utc').toISO()}--${time.end.setZone('utc').toISO()}`;
 	const url = `https://lightning.api.metraweather.com/${apiVersion}/strikes?time=${timeString}&bbox=${bbox}&limit=${limit}&offset=${offset}${providerString}${directionsString}`;
-	// console.log(`Making request for ${url} with Accept: "${format}"`);
+	process.env.debug && console.debug(`Making request for ${url} with Accept: "${format}"`);
+	const authorizationHeader = await getAuthorizationHeader(credentials);
 	const response = await fetch(url, {
 		headers: {
-			Accept: `${format}`,
-			Authorization: `${getAuthorizationPrefix(credentials.type)} ${credentials.token}`,
+			Accept: `${format.toString()}`,
+			...authorizationHeader
 		},
 	});
 	if (!response.ok) {
@@ -125,7 +142,6 @@ async function fetchAndFormatStrikes(
 		const links = parseLinkHeader(linkHeader);
 		strikesRemaining = links?.next !== undefined && links?.next !== null;
 	}
-	// console.log(`Strikes remaining: ${strikesRemaining}`);
 	const strikeCollection = await getFormattedStrikes(format, response);
 	return {
 		strikeCollection,
@@ -240,4 +256,4 @@ async function getFormattedStrikes(format: SupportedMimeType, response: Response
 	}
 }
 
-export { getAuthorizationPrefix, fetchAndFormatStrikes, getFormattedStrikes, fetchAndFormatStrikesAndFormatRetryingOnFail };
+export { getAuthorizationHeader, fetchAndFormatStrikes, getFormattedStrikes, fetchAndFormatStrikesAndFormatRetryingOnFail };

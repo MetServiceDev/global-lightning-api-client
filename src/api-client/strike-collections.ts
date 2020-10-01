@@ -61,8 +61,8 @@ class KMLStrikeCollection extends StrikeCollection<KML> {
 		const placemarksToMerge = nextCollection.kml.Document[0].Placemark || [];
 		const mergedPlacemarkDocument = currentPlacemarks
 			? {
-					Placemark: currentPlacemarks.concat(placemarksToMerge),
-			  }
+				Placemark: currentPlacemarks.concat(placemarksToMerge),
+			}
 			: {};
 		const mergedCollection: KML = {
 			kml: {
