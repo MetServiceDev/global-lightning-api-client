@@ -85,7 +85,7 @@ const getTokenReplacementFromConfiguration = (configuration: ClientConfiguration
 const outputStrikeCollection = async (strikeCollection: StrikeCollectionAndTime<StrikeCollectionType>, configuration: ClientConfiguration) => {
 	const { outputDetails, format } = configuration
 	if (outputDetails.type === OutputTypes.STDOUT) {
-		console.log(strikeCollection.strikeCollection.toString());
+		console.log(await strikeCollection.strikeCollection.toString());
 	} else {
 		const start = DateTime.fromISO(strikeCollection.start.toISOString(), { zone: 'utc' }).toFormat(outputDetails.timeFormat);
 		const end = DateTime.fromISO(strikeCollection.end.toISOString(), { zone: 'utc' }).toFormat(outputDetails.timeFormat);

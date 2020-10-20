@@ -41,7 +41,7 @@ const loadStoredConfiguration = async (): Promise<ClientConfiguration | undefine
 }
 
 const storeConfiguration = async (configuration: ClientConfiguration) => {
-	await writeConfig<ClientConfiguration>(ConfigType.Configuration, configuration);
+	await writeConfig(ConfigType.Configuration, configuration);
 }
 
 export {

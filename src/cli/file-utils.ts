@@ -26,7 +26,7 @@ async function readConfig<T>(configType: ConfigType): Promise<T | undefined> {
 	}
 }
 
-async function writeConfig<T>(configType: ConfigType, configuration: T) {
+async function writeConfig(configType: ConfigType, configuration: any) {
 	await mkdirPromise(METRAWEATHER_FOLDER, { recursive: true });
 	await writeFilePromise(CONFIGURATION_PATH(configType), JSON.stringify(configuration, null, 2));
 }

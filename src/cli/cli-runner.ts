@@ -182,9 +182,7 @@ const getOrThrowConfigurationUsingArgs = async (args: OpenEndedQueryCliArguments
 	if (undefinedKeys.length > 0) {
 		throw new Error(`No configuration defined, and missing the following arguments "${undefinedKeys.join('", "')}"`)
 	}
-	if (outputDetails.type !== OutputTypes.STDOUT && args.interactive) {
-		process.env.showProgress = `${true}`;
-	}
+	process.env.showProgress = `${true}`;
 	return configurationToUse;
 }
 
@@ -220,7 +218,6 @@ const getToTime = async (args: CloseEndedQueryCliArguments) => {
 const interactiveCli = async (args: CloseEndedQueryCliArguments) => {
 	const command = await askForCommand();
 	const reconfirm = args.reconfirm === undefined ? args._.length === 0 || command === Command.QUERY : args.reconfirm;
-	console.log(`${reconfirm} : ${args.reconfirm === undefined} ? ${args._.length === 0} || ${command === Command.QUERY} : ${args.reconfirm}`)
 	const updatedArgs = {
 		...args,
 		interactive: true,

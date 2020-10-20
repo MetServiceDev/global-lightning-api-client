@@ -70,7 +70,7 @@ const askForDuration = async (configuration: ClientConfiguration): Promise<strin
 		name: 'duration',
 		initial: configuration.chunkDuration,
 		validate: runValidationAsEnquirerPrompt(validateDuration),
-		footer: `${chalk.red('Warning:')} Increasing this will increase the delay between fetches in the "${Command.POLL}" and "${Command.STREAM}" commands and will adversely affect performance`
+		footer: `${chalk.red.bold('WARNING:')} Increasing this will increase the delay between fetches in the "${Command.POLL}" and "${Command.STREAM}" commands and will adversely affect performance`
 	} as any) as { duration: string };
 	return duration;
 }
@@ -124,8 +124,9 @@ const askForLimit = async (configuration: ClientConfiguration): Promise<number> 
 		message: `Maximum strikes to fetch in one query?`,
 		name: 'limit',
 		initial: configuration.limit,
+		footer: `${chalk.red.bold('WARNING:')} Low values will drastically reduce performance, we highly recommend you only reduce this if you have limited bandwidth and are experiencing issues`,
 		validate: runValidationAsEnquirerPrompt(validateLimit)
-	}) as { limit: string };
+	} as any) as { limit: string };
 	return validateLimit(limit);
 }
 
@@ -135,8 +136,9 @@ const askForParallelQueries = async (configuration: ClientConfiguration): Promis
 		message: `Maximum queries to run in parallel?`,
 		name: 'parallelQueries',
 		initial: configuration.parallelQueries,
+		footer: `${chalk.red.bold('WARNING:')} Low values will reduce performance, we recommend you only reduce this if you have limited bandwidth and are experiencing issues`,
 		validate: runValidationAsEnquirerPrompt(validateParallelQueries)
-	}) as { parallelQueries: string };
+	} as any) as { parallelQueries: string };
 	return validateParallelQueries(parallelQueries);
 }
 

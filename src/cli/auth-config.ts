@@ -93,7 +93,7 @@ const loadStoredAuthenticationDetails = async (): Promise<CredentialDetails | un
 
 const storeAuthenticationDetails = async (credentialDetails: CredentialDetails) => {
 	const authenticationConfig = transformCredentialDetailsIntoAuthenticationConfig(credentialDetails);
-	await writeConfig<AuthenticationConfig>(ConfigType.Credentials, authenticationConfig);
+	await writeConfig(ConfigType.Credentials, authenticationConfig);
 }
 
 export {
