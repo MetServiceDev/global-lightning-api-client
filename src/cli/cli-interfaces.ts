@@ -178,7 +178,7 @@ const askForAuthenticationDetails = async (currentCredentials: CredentialsDetail
 			{
 				name: CredentialType.jwt,
 				value: CredentialType.jwt,
-				message: 'A non-renewable time-limited cryptographically secure token'
+				message: 'JWT - A non-renewable time-limited cryptographically secure token'
 			},
 			{
 				name: CredentialType.apiKey,
@@ -186,7 +186,7 @@ const askForAuthenticationDetails = async (currentCredentials: CredentialsDetail
 			},
 			{
 				name: CredentialType.clientCredentials,
-				message: 'Secure client id and secret that will be periodically exchanged for a JWT'
+				message: 'Client Credentials - Secure client id and secret that will be periodically exchanged for a JWT'
 			}
 		],
 		initial: currentCredentials?.type || CredentialType.clientCredentials,
