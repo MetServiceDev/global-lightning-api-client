@@ -1,5 +1,5 @@
 import yargs, { Options, string, config } from 'yargs';
-import { SupportedMimeType, LightningDataNetworkProvider, LightningStrikeDirection, CredentialsDetails } from '../api-client/strike-api';
+import { SupportedMimeType, LightningDataNetworkProvider, LightningStrikeDirection, CredentialsDetails, CredentialType } from '../api-client/strike-api';
 import { loadStoredAuthenticationDetails, storeAuthenticationDetails } from '../cli/auth-config';
 import { validateBbox, validateDateTime, validateParallelQueries, validateLimit, validateTimeFormat, validateFileNameFormat, validateChoiceCaseInsensitive, validateMultipleChoiceCaseInsensitive } from '../cli/input-validation';
 import {
@@ -187,16 +187,18 @@ const getOrThrowConfigurationUsingArgs = async (args: OpenEndedQueryCliArguments
 }
 
 interface RunningConfiguration {
+	loadedCredentials: undefined | CredentialsDetails,
 	credentials: CredentialsDetails,
 	loadedConfiguration: undefined | ClientConfiguration,
 	runningConfiguration: ClientConfiguration
 }
 const getRunningConfiguration = async (args: OpenEndedQueryCliArguments): Promise<RunningConfiguration> => {
-	let credentials = await loadStoredAuthenticationDetails();
-	credentials = await getOrThrowAuthentication(args, credentials);
+	const loadedCredentials = await loadStoredAuthenticationDetails();
+	const credentials = await getOrThrowAuthentication(args, loadedCredentials);
 	const loadedConfiguration = await loadStoredConfiguration();
 	const runningConfiguration = await getOrThrowConfigurationUsingArgs(args, loadedConfiguration);
 	return {
+		loadedCredentials,
 		credentials,
 		loadedConfiguration,
 		runningConfiguration
@@ -217,6 +219,7 @@ const getToTime = async (args: CloseEndedQueryCliArguments) => {
 
 const interactiveCli = async (args: CloseEndedQueryCliArguments) => {
 	const command = await askForCommand();
+	// TODO: This reconfirms if not explictly set and called with an unknown command or if query is selected as the desired command. Is this a good behaviour?
 	const reconfirm = args.reconfirm === undefined ? args._.length === 0 || command === Command.QUERY : args.reconfirm;
 	const updatedArgs = {
 		...args,
@@ -224,10 +227,19 @@ const interactiveCli = async (args: CloseEndedQueryCliArguments) => {
 		reconfirm
 	}
 	// Double check values if no script was called or we are querying. Use the user-provided value
-	const { runningConfiguration, loadedConfiguration, credentials } = await getRunningConfiguration(updatedArgs);
+	const { runningConfiguration, loadedConfiguration, loadedCredentials, credentials } = await getRunningConfiguration(updatedArgs);
 	const overwrite = await confirmOverwriteOfConfiguration(loadedConfiguration, runningConfiguration);
 	if (overwrite) {
 		await storeConfiguration(runningConfiguration);
+	}
+	// If we had saved credentials but they are JWT, double-check they don't need to be overridden.
+	let credentialsToUse = credentials;
+	if (loadedCredentials && loadedCredentials.type === CredentialType.jwt) {
+		const updateCredentials = await queryWhetherToUpdateAuthenticationDetails(credentials);
+		if (updateCredentials) {
+			credentialsToUse = await askForAuthenticationDetails(credentials);
+			storeAuthenticationDetails(credentials);
+		}
 	}
 	switch (command) {
 		case Command.QUERY: {
@@ -258,9 +270,9 @@ const configure = async (args: OpenEndedQueryCliArguments) => {
 	const updateCredentials = await queryWhetherToUpdateAuthenticationDetails(credentials);
 	if (updateCredentials) {
 		credentials = await askForAuthenticationDetails(credentials);
-		storeAuthenticationDetails(credentials);
+		await storeAuthenticationDetails(credentials);
 	}
-	const updatedConfiguration = await getOrThrowConfigurationUsingArgs({ ...args, interactive: true }, configuration);
+	const updatedConfiguration = await getOrThrowConfigurationUsingArgs({ ...args, interactive: true, reconfirm: true }, configuration);
 	const overwrite = await confirmOverwriteOfConfiguration(configuration, updatedConfiguration);
 	if (overwrite) {
 		await storeConfiguration(updatedConfiguration);
