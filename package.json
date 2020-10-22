@@ -7,6 +7,9 @@
   "files": [
     "/dist/**/!(*.test).*"
   ],
+  "bin": {
+    "metraweather-global-lightning": "dist/bin/cli.js"
+  },
   "author": "James Boud <James.Boud@metservice.com>",
   "module": "dist/index.js",
   "homepage": "https://github.com/MetServiceDev/global-lightning-api-client/blob/master/README.md",
@@ -42,6 +45,7 @@
     "@types/node": "14.0.5",
     "@types/parse-link-header": "1.0.0",
     "@types/xml2js": "0.4.5",
+    "@types/yargs": "15.0.7",
     "husky": ">=4",
     "jest": "25.5.4",
     "lint-staged": ">=10",
@@ -52,9 +56,26 @@
     "typescript": "3.9.3"
   },
   "dependencies": {
+    "@metservice/metraweather-client-credentials": "0.0.1",
+    "chalk": "4.1.0",
+    "enquirer": "2.3.6",
     "isomorphic-fetch": "2.2.1",
+    "jsondiffpatch": "0.4.1",
     "luxon": "1.24.1",
+    "ora": "5.1.0",
     "parse-link-header": "1.0.1",
-    "xml2js": "0.4.23"
+    "xml2js": "0.4.23",
+    "yargs": "16.0.3"
+  },
+  "dependenciesMeta": {
+    "@types/yargs": {
+      "unplugged": true
+    },
+    "enquirer": {
+      "unplugged": true
+    },
+    "yargs": {
+      "unplugged": true
+    }
   }
 }

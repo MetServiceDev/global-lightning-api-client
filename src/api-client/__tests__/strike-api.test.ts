@@ -30,6 +30,7 @@ const mockFetchToReturnWithNoHeaders = (text: string = KML_RESPONSE_ONE, json: b
 			headers: {
 				get: () => null,
 			},
+			ok: true
 		} as any) as Response)
 	);
 
@@ -86,6 +87,7 @@ describe('When fetching strikes', () => {
 						headers: {
 							get: () => null,
 						},
+						ok: true
 					} as any) as Response);
 				}
 				return (Promise.reject('Failed to fetch') as any) as Response;
@@ -129,6 +131,7 @@ describe('When fetching strikes', () => {
 					headers: {
 						get: () => '',
 					},
+					ok: true
 				} as any) as Response)
 			);
 			(parseLinkHeader as jest.Mock).mockReturnValue({
@@ -153,6 +156,7 @@ describe('When fetching strikes', () => {
 					headers: {
 						get: () => '',
 					},
+					ok: true
 				} as any) as Response)
 			);
 			(parseLinkHeader as jest.Mock).mockReturnValue({
