@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import yargs, { Options } from 'yargs';
 import { SupportedMimeType, LightningDataNetworkProvider, LightningStrikeDirection } from '../api-client/strike-api';
 import { validateBbox, validateDateTime, validateParallelQueries, validateLimit, validateTimeFormat, validateFileNameFormat, validateChoiceCaseInsensitive, validateMultipleChoiceCaseInsensitive } from '../cli/input-validation';

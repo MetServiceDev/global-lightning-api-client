@@ -38,7 +38,7 @@ We have not built any functionality to deal with this complexity below, instead 
 
 ## Installing
 ### CLI
-This library provides a CLI which should meet most needs. You may run the latest version of this with `npx -p @metservice/global-lightning-client metraweather-global-lightning`, or a specific version with `npx -p @metservice/global-lightning-client metraweather-global-lightning@version`. Alternatively you may install it locally with `npm install -g @metservice/global-lightning-client` and then you can run `npm metraweather-global-lightning`. While every attempt will be made to not break the CLI, we recommend that you lock it to a specific version for production use-cases.
+This library provides a CLI which should meet most needs. You may run the latest version of this with `npx -p @metservice/global-lightning-client`, or a specific version with `npx -p @metservice/global-lightning-client@version`. Alternatively you may install it locally with `npm install -g @metservice/global-lightning-client` and then you can run `@metservice/global-lightning-client`. While every attempt will be made to not break the CLI, we recommend that you lock it to a specific version for production use-cases.
 
 ### Library
 If you want to use this in a NodeJS project, you may run `npm install @metservice/global-lightning-client` or `yarn add @metservice/global-lightning-client`.
@@ -54,8 +54,8 @@ Otherwise you may import it into a NodeJS project. The three currently supported
 If you want to make a request for 3 hours or more of historic/finalised data, then the following query will do so. (We would suggest doing this for any query larger than 15 minutes).
 
 ### CLI
-Run `npm metraweather-global-lightning query`, this will default to asking you what you want.
-The following code example can be run like so: `npm metraweather-global-lightning query --format kml --from 2020-06-20T00:00:00.000Z --to 2020-06-30T00:00:00.000Z --limit 10000 --bbox -180,-90 180,-90`
+Run `@metservice/global-lightning-client query`, this will default to asking you what you want.
+The following code example can be run like so: `@metservice/global-lightning-client query --format kml --from 2020-06-20T00:00:00.000Z --to 2020-06-30T00:00:00.000Z --limit 10000 --bbox -180,-90 180,-90`
 
 ### Code example
 ```js
@@ -98,12 +98,12 @@ const fetchLargePeriodOfData = async ({ folderToDownloadStrikesTo, credentials }
 ### When to use
 If you want to periodically fetch all new finalised data since you last ran the command/code.
 ### CLI
-Run `npm metraweather-global-lightning configure` to configure what data you want, and then run `npm metraweather-global-lightning fetch-latest-batches`.
+Run `@metservice/global-lightning-client configure` to configure what data you want, and then run `@metservice/global-lightning-client fetch-latest-batches`.
 
-Every time `npm metraweather-global-lightning fetch-latest-batches` is run it will download the latest data that is not currently present.
+Every time `@metservice/global-lightning-client fetch-latest-batches` is run it will download the latest data that is not currently present.
 
 **WARNING:** If you use STDOUT with this option, it will always fetch all the data from `from`. You must provide a new from or use FILE output to avoid this behaviour.
-This can be done with `npm metraweather-global-lightning fetch-latest-batches --from 2020-10-20T14:00:00.000Z`
+This can be done with `@metservice/global-lightning-client fetch-latest-batches --from 2020-10-20T14:00:00.000Z`
 ### Code
 ```js
 import {
@@ -177,12 +177,12 @@ const fetchAllFinishedData = async ({ folderToDownloadStrikesTo, credentials }: 
 ### When to use
 If you want to a process that will continiously fetch all new finalised data.
 ### CLI
-Run `npm metraweather-global-lightning configure` to configure what data you want, and then run `npm metraweather-global-lightning stream-latest-batches`.
+Run `@metservice/global-lightning-client configure` to configure what data you want, and then run `@metservice/global-lightning-client stream-latest-batches`.
 
-Every time `npm metraweather-global-lightning stream-latest-batches` is run it will download the latest data that is not currently present and then download data as it becomes available. In this way, it is recoverable so the command can be interupted.
+Every time `@metservice/global-lightning-client stream-latest-batches` is run it will download the latest data that is not currently present and then download data as it becomes available. In this way, it is recoverable so the command can be interupted.
 
 **WARNING:** If you use STDOUT with this option, it will always fetch all the data from `from`. You must provide a new from or use FILE output to avoid this behaviour.
-This can be done with `npm metraweather-global-lightning stream-latest-batches --from 2020-10-20T14:00:00.000Z`
+This can be done with `@metservice/global-lightning-client stream-latest-batches --from 2020-10-20T14:00:00.000Z`
 
 ### Code
 NOTE: This sample is not the same as the CLI, namely it does not handle recovering if the command is stopped. If you want that, you can use the code from `fetchAllFinishedData` and then use this. See `src/cli/commands.ts - streamLatestStrikeBatches` for a reference implementation.

@@ -610,7 +610,7 @@ __metadata:
     xml2js: 0.4.23
     yargs: 16.0.3
   bin:
-    metraweather-global-lightning: dist/bin/cli.js
+    global-lightning-client: ./dist/bin/cli.js
   languageName: unknown
   linkType: soft
 

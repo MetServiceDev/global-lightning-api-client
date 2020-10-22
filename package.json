@@ -1,15 +1,13 @@
 {
   "name": "@metservice/global-lightning-client",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A client to access MetraWeather/MetService's global Lightning API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "/dist/**/!(*.test).*"
   ],
-  "bin": {
-    "metraweather-global-lightning": "dist/bin/cli.js"
-  },
+  "bin": "./dist/bin/cli.js",
   "author": "James Boud <James.Boud@metservice.com>",
   "module": "dist/index.js",
   "homepage": "https://github.com/MetServiceDev/global-lightning-api-client/blob/master/README.md",
