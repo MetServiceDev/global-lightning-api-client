@@ -609,13 +609,6 @@ __metadata:
     typescript: 3.9.3
     xml2js: 0.4.23
     yargs: 16.0.3
-  dependenciesMeta:
-    "@types/yargs":
-      unplugged: true
-    enquirer:
-      unplugged: true
-    yargs:
-      unplugged: true
   bin:
     metraweather-global-lightning: dist/bin/cli.js
   languageName: unknown

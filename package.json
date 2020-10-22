@@ -1,6 +1,6 @@
 {
   "name": "@metservice/global-lightning-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A client to access MetraWeather/MetService's global Lightning API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -66,16 +66,5 @@
     "parse-link-header": "1.0.1",
     "xml2js": "0.4.23",
     "yargs": "16.0.3"
-  },
-  "dependenciesMeta": {
-    "@types/yargs": {
-      "unplugged": true
-    },
-    "enquirer": {
-      "unplugged": true
-    },
-    "yargs": {
-      "unplugged": true
-    }
   }
 }
