@@ -583,7 +583,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@metservice/global-lightning-client@workspace:."
   dependencies:
-    "@metservice/metraweather-client-credentials": 0.0.1
+    "@metservice/metraweather-client-credentials": 0.0.2
     "@metservice/prettier": 1.1.0
     "@types/isomorphic-fetch": 0.0.35
     "@types/jest": 25.2.3
@@ -614,9 +614,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@metservice/metraweather-client-credentials@npm:0.0.1":
-  version: 0.0.1
-  resolution: "@metservice/metraweather-client-credentials@npm:0.0.1"
+"@metservice/metraweather-client-credentials@npm:0.0.2":
+  version: 0.0.2
+  resolution: "@metservice/metraweather-client-credentials@npm:0.0.2"
   dependencies:
     chalk: 4.1.0
     enquirer: 2.3.6
@@ -634,7 +634,7 @@ __metadata:
       unplugged: true
     yargs:
       unplugged: true
-  checksum: 6ace2e397e0d06c06cd634f3a42ee8ba461ffc83db39587ebd1df43c0b3620e9ec85540093d260e25f6306e5e45e8b6dead21b200ce8171daa036241143e85c3
+  checksum: 4aaa169c2ddcca829d1a5af1b5cbd8669b6fd55c31d4d41cc6122d92b034b099015e5a37613ffbe8eb20d36e00abb99a407985561e42b7ac9d0db7e9d6f86941
   languageName: node
   linkType: hard
 
