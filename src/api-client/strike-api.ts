@@ -119,11 +119,11 @@ async function fetchAndFormatStrikes(
 	format: SupportedMimeType,
 	{ credentials, apiVersion, time, bbox, limit, offset, providers, directions }: StrikeQueryParameters
 ): Promise<ApiResponse<StrikeCollectionType>> {
-	const providerString = providers ? `&provider=${providers.join(',')}` : '';
+	const providerString = providers ? `&providers=${providers.join(',')}` : '';
 	const directionsString = directions ? `&direction=${directions.join(',')}` : '';
 	const timeString = `${time.start.setZone('utc').toISO()}--${time.end.setZone('utc').toISO()}`;
 	const url = `https://lightning.api.metraweather.com/${apiVersion}/strikes?time=${timeString}&bbox=${bbox}&limit=${limit}&offset=${offset}${providerString}${directionsString}`;
-	process.env.debug && console.debug(`Making request for ${url} with Accept: "${format}"`);
+	process.env.debug === 'true' && console.debug(`Making request for ${url} with Accept: "${format}"`);
 	const authorizationHeader = await getAuthorizationHeader(credentials);
 	const response = await fetch(url, {
 		headers: {
