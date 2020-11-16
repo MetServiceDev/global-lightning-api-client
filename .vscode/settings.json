@@ -1,9 +1,0 @@
-{
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-  "typescript.tsdk": "/home/axiom/dev/projects/metservice/services/lightning/global-lightning-service/lightning-client/.yarn/sdks/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "search.exclude": {
-    "**/.yarn": true,
-    "**/.pnp.*": true
-  }
-}

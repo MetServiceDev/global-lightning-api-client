@@ -54,7 +54,7 @@
     "typescript": "3.9.3"
   },
   "dependencies": {
-    "@metservice/metraweather-client-credentials": "0.0.1",
+    "@metservice/metraweather-client-credentials": "0.0.2",
     "chalk": "4.1.0",
     "enquirer": "2.3.6",
     "isomorphic-fetch": "2.2.1",

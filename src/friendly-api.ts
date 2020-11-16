@@ -277,7 +277,7 @@ async function fetchPeriodOfHistoricStrikesInChunks(
 	for (let index = 0; index < periodChunks.length; index += maximumQueries) {
 		const periodChunksToProcess = periodChunks.slice(index, index + maximumQueries);
 		let progress = process.env.showProgress && ora().start(`Getting data from ${periodChunksToProcess[0].start.toISO()} to ${periodChunksToProcess.slice(-1)[0].end.toISO()}`);
-		process.env.debug && console.log(`Getting data from ${periodChunksToProcess[0].start.toISO()} to ${periodChunksToProcess.slice(-1)[0].end.toISO()}`);
+		process.env.debug === 'true' && console.log(`Getting data from ${periodChunksToProcess[0].start.toISO()} to ${periodChunksToProcess.slice(-1)[0].end.toISO()}`);
 		const chunkedStrikeCollections = await Promise.all(
 			periodChunksToProcess.map(async (period) => {
 				return {
@@ -382,7 +382,7 @@ const persistStrikesToFile = async (collectionToPersist: StrikeCollection<Strike
 		const collectionAsString = await collectionToPersist.toString();
 		await writeFilePromise(`${directoryToSaveIn}/${fileName}`, collectionAsString);
 	} catch (error) {
-		process.env.debug && console.error(`Failed to write collection to disk`, error);
+		process.env.debug === 'true' && console.error(`Failed to write collection to disk`, error);
 		throw error;
 	}
 };

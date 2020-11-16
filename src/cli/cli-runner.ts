@@ -232,13 +232,15 @@ const interactiveCli = async (args: CloseEndedQueryCliArguments) => {
 	if (overwrite) {
 		await storeConfiguration(runningConfiguration);
 	}
-	// If we had saved credentials but they are JWT, double-check they don't need to be overridden.
 	let credentialsToUse = credentials;
-	if (loadedCredentials && loadedCredentials.type === CredentialType.jwt) {
+	// If we had saved credentials but they are JWT, double-check they don't need to be overridden.
+	if(!loadedCredentials) {
+		await storeAuthenticationDetails(credentials);
+	} else if (loadedCredentials && loadedCredentials.type === CredentialType.jwt) {
 		const updateCredentials = await queryWhetherToUpdateAuthenticationDetails(credentials);
 		if (updateCredentials) {
 			credentialsToUse = await askForAuthenticationDetails(credentials);
-			storeAuthenticationDetails(credentials);
+			await storeAuthenticationDetails(credentials);
 		}
 	}
 	switch (command) {
