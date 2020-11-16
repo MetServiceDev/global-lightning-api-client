@@ -205,7 +205,7 @@ describe('When fetching strikes', () => {
 						},
 						providers: [LightningDataNetworkProvider.toa],
 					} as StrikeQueryParameters);
-					expect((global.fetch as jest.Mock).mock.calls[0][0]).toMatch('provider=toa');
+					expect((global.fetch as jest.Mock).mock.calls[0][0]).toMatch('providers=toa');
 				});
 				it('should add multiple providers', async () => {
 					mockFetchToReturnWithNoHeaders();
@@ -217,7 +217,7 @@ describe('When fetching strikes', () => {
 						},
 						providers: [LightningDataNetworkProvider.toa, LightningDataNetworkProvider.transpower],
 					} as StrikeQueryParameters);
-					expect((global.fetch as jest.Mock).mock.calls[0][0]).toMatch('provider=toa,transpower');
+					expect((global.fetch as jest.Mock).mock.calls[0][0]).toMatch('providers=toa,transpower');
 				});
 			});
 			describe('when passed a direction', () => {

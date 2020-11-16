@@ -1,6 +1,6 @@
 {
   "name": "@metservice/global-lightning-client",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A client to access MetraWeather/MetService's global Lightning API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
